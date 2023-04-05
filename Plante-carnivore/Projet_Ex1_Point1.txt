@@ -1,0 +1,20 @@
+1) Analyser l'énoncé 
+
+- Algo prend en entrée en fichier 
+- 1ère ligne du fichier est le nombre de lignes n du champs (1) 
+- Ensuite, il y a 2*n lignes dans le fichier 
+  la première contient le nombre de fleurs sur la ligne (2) 
+  la deuxième contient le détail de ces fleurs (3) 
+
+Ainsi si n = 2 
+Il y aura 5 lignes dans le fichier (soit (1) puis (2) puis (3) puis (2) puis (3) 
+
+
+But : voir si une plante est envahissante (soit si pour le nombre de plantes M d'une ligne, une plante apparait > M/2 fois - dans ce cas là pour la ligne renvoie le nom de la plante envahissante, et sinon renvoie null) 
+
+
+
+
+
+
+
