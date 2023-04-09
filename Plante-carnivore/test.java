@@ -26,10 +26,8 @@ public class test {
         }
         else{
             System.out.println(fleurEnvahissante);
-        }
-        
+        }  
     }
-
 
     public static int compterOccurence (String[] tab, String elem){
         int compteur = 0; 
