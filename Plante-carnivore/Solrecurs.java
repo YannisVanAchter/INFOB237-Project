@@ -1,12 +1,9 @@
-
 import java.util.ArrayList;
 import java.io.*; 
 
-// A spécifier
-// Faire fct pr fichier -> dico
-// Sol naive 
+// Sol récursive 
 
-public class test {
+public class Solrecurs {
     public static void main(String args[])
   {
     try
