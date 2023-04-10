@@ -1,20 +1,54 @@
-import java.util.Arrays; 
+
 import java.util.ArrayList;
+import java.io.*; 
 
 // A spécifier
 // Faire fct pr fichier -> dico
 // Sol naive 
 
-
 public class test {
     public static void main(String args[])
-    {   String[] fleurs = {"Rose", "Pissenlit", "Tulipe", "Paquerette", "Rose",  "Pissenlit"};
-        Arrays.sort(fleurs);  // Tri du tableau 
+  {
+    try
+    {
+      // Le fichier du champ contenant toutes les fleurs 
+      File file = new File("champ.txt");
+      // Créer l'objet File Reader
+      FileReader fr = new FileReader(file);
+      // Créer l'objet BufferedReader
+      BufferedReader br = new BufferedReader(fr);
+      // Voit combien il y a de lignes dans le champ
+      String nombreLignes = br.readLine();
+      int n = Integer.parseInt(nombreLignes);
+
+      int i = 0; 
+    
+        // Lit les nx2 lignes suivantes du fichier
+      while (i < n){
+        br.readLine(); 
+        String m_plantes = br.readLine(); 
+        // Crée le tableau contenant les plantes
+        String[]plantes = m_plantes.split(", "); 
+        trouver_envahisseur(plantes);
+        i+=1; 
+      }
+
+      fr.close();
+
+    }
+    catch(IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+    public static void trouver_envahisseur(String[] fleurs)
+    {  
         ArrayList<String> fleurEnvahissante = new ArrayList<>();
     
         for (String fleur : fleurs){
             int compteur = compterOccurence(fleurs, fleur);
-            if ( compteur >= fleurs.length/2){
+            if ( compteur > fleurs.length/2){
                 if (!fleurEnvahissante.contains(fleur)){
                     fleurEnvahissante.add(fleur); 
                 }
@@ -25,7 +59,7 @@ public class test {
             System.out.println("null");
         }
         else{
-            System.out.println(fleurEnvahissante);
+            System.out.println(fleurEnvahissante.get(0));
         }  
     }
 

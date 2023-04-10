@@ -1,0 +1,7 @@
+3
+6
+Rose, Pissenlit, Tulipe, Paquerette, Rose,  Pissenlit
+5
+Marguerite, Pissenlit, Tulipe, Paquerette, Rose
+3
+Pissenlit, Rose, Rose, Rose
