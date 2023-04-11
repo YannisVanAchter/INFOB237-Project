@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.io.*; 
 
 // Sol récursive 
+// force brute: l'idée est de trouver une fleur envahissante dans le tableau 
 
 public class Solrecurs {
     public static void main(String args[])
@@ -20,7 +21,7 @@ public class Solrecurs {
 
       int i = 0; 
     
-        // Lit les nx2 lignes suivantes du fichier
+      // Lit les 2*n lignes suivantes du fichier
       while (i < n){
         br.readLine(); 
         String m_plantes = br.readLine(); 
