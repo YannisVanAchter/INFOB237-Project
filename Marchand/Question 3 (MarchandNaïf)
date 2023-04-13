@@ -1,0 +1,67 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+public class MarchandNaif {
+
+    public static void main(String[] args) throws FileNotFoundException {
+        try {
+            read_file("D:\Documents\UNamur\Algo\Projet\Marchand.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+        }    
+    }
+
+    public static int find_max_value(Items[] bag, int nbitem, int maxpoids){
+
+      read_file("Marchand.txt");
+      //pas fini 
+
+        return 0;
+    }
+
+    //lecture de fichier
+    public static void read_file(String nom_fichier) throws FileNotFoundException { 
+        File fichier = new File(nom_fichier);
+        Scanner myReader = new Scanner(fichier);
+        int N = 0;
+        int I = 0;
+        int J = 0;
+
+        if (myReader.hasNextLine()) {
+
+            String line = myReader.nextLine();
+            N = Integer.parseInt(line);
+        }
+
+        while (I < N){
+            String line = myReader.nextLine();
+            String[] parts = line.split(" ");
+            int nb_items = Integer.parseInt(parts[0]);
+            int poids_max = Integer.parseInt(parts[1]);
+            Items[] sac = new Items[nb_items];
+
+            while(J < nb_items){
+                line = myReader.nextLine();
+                //System.out.println(line);
+                String[] tab = line.split(" ");
+                int valeur = Integer.parseInt(tab[0]);
+                int poids = Integer.parseInt(tab[1]);
+                sac[J] = new Items(valeur, poids);
+                J++;
+            }
+
+            find_max_value(sac, nb_items, poids_max);
+
+            System.out.println("RECO");
+            I++;
+            J = 0;
+
+        }
+
+    }
+
+}
