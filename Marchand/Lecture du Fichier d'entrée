@@ -31,24 +31,6 @@ public class LectureFichier {
                 poids[j] = Integer.parseInt(ij[1]);
             }
 
-            // Resolution du probleme du marchand
-            int[][] dp = new int[n+1][m+1];
-            for (int j = 1; j <= n; j++) {
-                for (int k = 0; k <= m; k++) {
-                    if (poids[j-1] > k) {
-                        dp[j][k] = dp[j-1][k];
-                    } else {
-                        dp[j][k] = Math.max(dp[j-1][k], dp[j-1][k-poids[j-1]] + valeurs[j-1]);
-                    }
-                }
-            }
-            int valeurMax = dp[n][m];
-
-            // Affichage de la valeur maximale
-            System.out.println("Cas test " + (i+1) + ": " + valeurMax);
-        }
-
-        // Fermeture du fichier
         br.close();
     }
 }
