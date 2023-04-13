@@ -1,0 +1,36 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class LectureFichier {
+
+    public static void main(String[] args) throws IOException {
+
+        // Ouverture du fichier en lecture
+        BufferedReader br = new BufferedReader(new FileReader("fichier.txt"));
+
+        // Lecture du nombre de cas test
+        int nbCasTest = Integer.parseInt(br.readLine());
+
+        // Boucle sur les cas test
+        for (int i = 0; i < nbCasTest; i++) {
+
+            // Lecture de N et M
+            String[] nm = br.readLine().split(" ");
+            int n = Integer.parseInt(nm[0]);
+            int m = Integer.parseInt(nm[1]);
+
+            // Initialisation des tableaux de valeurs et de poids
+            int[] valeurs = new int[n];
+            int[] poids = new int[m];
+
+            // Lecture des N lignes suivantes
+            for (int j = 0; j < n; j++) {
+                String[] ij = br.readLine().split(" ");
+                valeurs[j] = Integer.parseInt(ij[0]);
+                poids[j] = Integer.parseInt(ij[1]);
+            }
+
+        br.close();
+    }
+}

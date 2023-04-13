@@ -18,7 +18,6 @@ public class Main {
                     int nbLines = Integer.parseInt(mapSize[0]);
                     int nbColumn = Integer.parseInt(mapSize[1]);
                     int beerLimit = Integer.parseInt(mapSize[2]);
-                    System.out.println("nbLines: " + nbLines + "\nnbColumn: " + nbColumn + "\nbeerLimit: " + beerLimit);
 
                     for (int lineId = 0; lineId < nbLines; lineId++) {
                         String[] line = br.readLine().strip().split(" ");
@@ -56,6 +55,9 @@ public class Main {
         return best;
     }
 
+    /**
+     * DO NOT USE THIS FUNCTION, USE findBestPath(HashMap<Integer, ArrayList<Integer>> map, int beerLimit) INSTEAD
+     */
     public static int findBestPath(
             HashMap<Integer, ArrayList<Integer>> map,
             int beerLimit,
@@ -63,34 +65,27 @@ public class Main {
             int currentRowId,
             int currentBeer) {
 
+        currentBeer += map.get(currentRowId).get(currentColumnId);
+
         // check if we are at the end of the map
         if (currentColumnId == map.get(0).size() - 1 && currentRowId == map.size() - 1) {
-            return currentBeer + map.get(currentRowId).get(currentColumnId);
+            return currentBeer;
         }
 
         // new horizontal position
         int beerHorizontal = Integer.MAX_VALUE;
         if (currentColumnId + 1 < map.get(0).size())
-        {
-            beerHorizontal = currentBeer + map.get(currentRowId).get(currentColumnId + 1);
-            beerHorizontal = findBestPath(map, beerLimit, currentColumnId + 1, currentRowId, beerHorizontal);
-        }
+            beerHorizontal = findBestPath(map, beerLimit, currentColumnId + 1, currentRowId, currentBeer);
 
         // new vertical position
         int beerVertical = Integer.MAX_VALUE;
         if (currentRowId + 1 < map.size())
-        {
-            beerVertical = currentBeer + map.get(currentRowId + 1).get(currentColumnId);
-            beerVertical = findBestPath(map, beerLimit, currentColumnId, currentRowId + 1, beerVertical);
-        }
+            beerVertical = findBestPath(map, beerLimit, currentColumnId, currentRowId + 1, currentBeer);
 
         // new diagonal position
         int beerDiagonal = Integer.MAX_VALUE;
         if (currentColumnId + 1 < map.get(0).size() && currentRowId + 1 < map.size())
-        {
-            beerDiagonal = currentBeer + map.get(currentRowId + 1).get(currentColumnId + 1);
-            beerDiagonal = findBestPath(map, beerLimit, currentColumnId + 1, currentRowId + 1, beerDiagonal);
-        }
+            beerDiagonal = findBestPath(map, beerLimit, currentColumnId + 1, currentRowId + 1, currentBeer);
 
         // get best option
         return Math.min(
