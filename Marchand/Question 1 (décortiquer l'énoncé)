@@ -9,7 +9,7 @@ But de cet algo : trouver la solution optimale afin de permettre au marchand de 
 Exemple de fichier d'entrée décortiqué :
 2             = nbr de cas test
 5 17          = 1er cas test
-3 8
+3 8           => 3 = valeur du produit et 8 = poids du produit 
 5 1
 12 13
 15 1
@@ -17,3 +17,5 @@ Exemple de fichier d'entrée décortiqué :
 2 3           = 2ème cas test
 1 1
 5 2
+
+
