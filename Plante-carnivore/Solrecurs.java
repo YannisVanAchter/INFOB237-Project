@@ -5,7 +5,7 @@ import java.io.*;
 // force brute: l'idée est de trouver une fleur envahissante dans le tableau grâce à la méthode diviser pour régner
 
 public class Solrecurs {
-  public static String main(String args[])
+  public static ArrayList<String> main(String args[])
   {
     try
     {
@@ -20,6 +20,8 @@ public class Solrecurs {
       int n = Integer.parseInt(nombreLignes);
 
       int i = 0; 
+
+      ArrayList <String> EnvahisseursChamp = new ArrayList <>();
     
       // Lit les 2*n lignes suivantes du fichier
       while (i < n){
@@ -27,17 +29,22 @@ public class Solrecurs {
         String m_plantes = br.readLine(); 
         // Crée le tableau contenant les plantes
         String[]plantes = m_plantes.split(", ");
-        i+=1;  
-        return(trouver_envahisseur(plantes, 0, plantes.length)); 
+        i+=1; 
+        EnvahisseursChamp.add(trouver_envahisseur(plantes, 0, plantes.length)); 
       }
+ 
 
       fr.close();
-
+      return(EnvahisseursChamp);
     }
+
     catch(IOException e)
     {
       e.printStackTrace();
     }
+  
+  return(new ArrayList<String>());
+ 
   }
 
 
@@ -50,19 +57,16 @@ public class Solrecurs {
     }
 
     // Sinon diviser pour régner 
-    String partieGauche = trouver_envahisseur(String[] fleurs, 0, fleurs.length/2 )
-    String partieDroite = trouver_envahisseur(String[] fleurs, fleurs.length/2, fleur.length) 
+    String partieGauche = trouver_envahisseur(fleurs, 0, fleurs.length/2);
+    String partieDroite = trouver_envahisseur(fleurs, fleurs.length/2, fleurs.length);
     // Dans le cas d'un tab contenant un nombre impair de fleurs, partieDroite prendra en compte un élément supplémentaire que partieGauche
 
-
-  
-    int EnvahisseurGauche = compterOccurence(fleurs, partieGauche, 0, fleurs.length/2) 
-    int EnvahisseurDroite = compterOccurence(fleurs, partieDroite, fleurs.length/2, fleur.length)
-
+    int EnvahisseurGauche = compterOccurence(fleurs, partieGauche, 0, fleurs.length/2);
+    int EnvahisseurDroite = compterOccurence(fleurs, partieDroite, fleurs.length/2, fleurs.length);
 
 
     // Comparer les résultats pour trouver l'envahisseur final 
-    if (partieGauche = partieDroite) {
+    if (partieGauche == partieDroite) {
         return partieGauche;
     }
     else{
