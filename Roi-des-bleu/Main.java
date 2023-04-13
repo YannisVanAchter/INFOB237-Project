@@ -68,9 +68,8 @@ public class Main {
         currentBeer += map.get(currentRowId).get(currentColumnId);
 
         // check if we are at the end of the map
-        if (currentColumnId == map.get(0).size() - 1 && currentRowId == map.size() - 1) {
+        if (currentColumnId == map.get(0).size() - 1 && currentRowId == map.size() - 1)
             return currentBeer;
-        }
 
         // new horizontal position
         int beerHorizontal = Integer.MAX_VALUE;
