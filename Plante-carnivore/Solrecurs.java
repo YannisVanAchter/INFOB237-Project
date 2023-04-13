@@ -5,7 +5,13 @@ import java.io.*;
 // force brute: l'idée est de trouver une fleur envahissante dans le tableau grâce à la méthode diviser pour régner
 
 public class Solrecurs {
-  public static ArrayList<String> main(String args[])
+
+  public static void main(String args[])
+  {
+    lectureFichier(args);  
+  }
+    
+  public static ArrayList<String> lectureFichier (String args[])
   {
     try
     {
@@ -46,8 +52,6 @@ public class Solrecurs {
   return(new ArrayList<String>());
  
   }
-
-
 
   public static String trouver_envahisseur(String[] fleurs, int debut, int fin)
   { 
