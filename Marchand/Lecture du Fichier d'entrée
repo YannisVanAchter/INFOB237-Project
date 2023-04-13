@@ -22,7 +22,7 @@ public class LectureFichier {
 
             // Initialisation des tableaux de valeurs et de poids
             int[] valeurs = new int[n];
-            int[] poids = new int[n];
+            int[] poids = new int[m];
 
             // Lecture des N lignes suivantes
             for (int j = 0; j < n; j++) {
