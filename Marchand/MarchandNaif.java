@@ -75,8 +75,8 @@ public class MarchandNaif {
             int weight = 0;
             for (int j = 0; j < nb_items; j++) {
                 if ((i & (1 << j)) > 0) { // si l'objet est dans la combinaison
-                    value += items[j].valeur;
-                    weight += items[j].poids;
+                    value += items[j].getValeur();
+                    weight += items[j].getPoids();
                 }
             }
             if (weight <= poids_max && value > max_value) { // si la combinaison respecte le poids maximal et que la valeur est plus élevée que la valeur maximale actuelle
