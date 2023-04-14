@@ -1,7 +1,8 @@
+//Spe JML
 public class Specifications {
 
     /**
-     * @public exceptional behavior;
+     * @public exceptional_behavior;
      * @signals (FileNotFoundException) file not found;
      */
     public static void main(String[] args) throws FileNotFoundException{
@@ -9,7 +10,7 @@ public class Specifications {
     }
 
     /**
-     * @public exceptional behavior;
+     * @public exceptional_behavior;
      * @signals (FileNotFoundException) file not found;
      */
     public static void read_file(String nom_fichier) throws FileNotFoundException {
@@ -17,7 +18,7 @@ public class Specifications {
     }
 
     /**
-     * @public normal behavior; 
+     * @public normal_behavior; 
      * @requires items != null && nb_items > 0 && poids_max > 0;
      * @requires (\forall int i; 0 <= i && i < nb_items; items[i] != null);
      * @ensures \result >= 0;
