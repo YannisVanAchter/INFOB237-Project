@@ -13,7 +13,7 @@ public class MarchandNaif {
         try {
 
             read_file("D:\Documents\UNamur\Algo\Projet\Marchand.txt");
-            max_value = naive_find_max_value(Items[], , 0)
+            max_value = find_max_value(Items[], nb_items, poids_max)
 
         } catch (FileNotFoundException e) {
 
@@ -55,8 +55,6 @@ public class MarchandNaif {
                 }
 
                 find_max_value(sac, nb_items, poids_max);
-
-                System.out.println("RECO");
                 i++;
                 j = 0;
 
