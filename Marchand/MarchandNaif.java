@@ -1,5 +1,7 @@
 //Question 3
 
+//Cette solution naive a une complexite de O(2^n), ce qui la rend impraticable pour des ensembles de données de grande taille.
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
