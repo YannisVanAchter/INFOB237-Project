@@ -14,8 +14,8 @@ public class MarchandNaif {
     public static void main(String[] args) throws FileNotFoundException {
         try {
 
-            read_file("D:\Documents\UNamur\Algo\Projet\Marchand.txt");
-            max_value = find_max_value(Items[], nb_items, poids_max)
+            read_file("Marchand.txt");
+            int max_value = find_max_value(Items[], nb_items, poids_max)
 
         } catch (FileNotFoundException e) {
 
@@ -29,19 +29,19 @@ public class MarchandNaif {
     public static void read_file(String nom_fichier) throws FileNotFoundException { 
         try {
             File fichier = new File(nom_fichier);
-            Scanner myFile = new Scanner(fichier);
+            Scanner myReader = new Scanner(fichier);
             int n = 0; 
             int i = 0; 
             int j = 0; 
 
-            if (myFile.hasNextLine()) {
+            if (myReader.hasNextLine()) {
 
                 String line = myReader.nextLine();
                 n = Integer.parseInt(line);
             }
 
             while (i < n){
-                String line = myFile.nextLine();
+                String line = myReader.nextLine();
                 String[] parts = line.split(" ");
                 int nb_items = Integer.parseInt(parts[0]);
                 int poids_max = Integer.parseInt(parts[1]);
@@ -88,3 +88,9 @@ public class MarchandNaif {
     }
 
 }
+
+/*
+L'operateur << est l'operateur de decalage a gauche en Java. L'expression (1 << nb_items) signifie que l'on decale le nombre binaire 1 de nb_items bits vers la gauche. 
+En d'autres termes, cela revient a elever 2 a la puissance nb_items. Par exemple, si nb_items vaut 3, alors (1 << nb_items) vaut 8
+car 1 (en binaire: 0001) decale de 3 bits vers la gauche donne 1000 (en binaire: 1000), qui represente le nombre 8 en base 10.
+ */
