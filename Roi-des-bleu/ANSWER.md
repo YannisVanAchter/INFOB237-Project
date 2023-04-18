@@ -1,19 +1,21 @@
-# Analysis of the algorithm setpoints
+# Annotation for project
 
-## Algorithm goals
+## Analysis of the algorithm setpoints
+
+### Algorithm goals
 - Finding the shortest path 
 - At each node, drink the content before moving to the next one
 - Total of drinkable is determined by a number include in the description file (limit set as K)
 
-## Map patern
+### Map patern
 - Rectangle of the M x N defined in the description file
 
-## Output description
+### Output description
 - -1 if there is no solution
 - n° beer if there is at least one solution (if many, return the best solution)
 
 
-## Description file patern
+### Description file patern
 - N° of map description in the current file
 - parameter of the current map
 - Map where all numbers are the beer quantities
@@ -38,3 +40,22 @@ Example:
 6 5 5 3
 5 2 3 4 // will return -1
 ```
+
+## Invariant and loop variant
+
+WAIT FOR SIMON 
+
+## Complexity of the naïve solution
+
+O(n^3)
+
+## Optimal sub-structure of the solution
+Start from the end of the path
+
+Go one step upwards at a time until the solution (be back to the beginning)
+
+At each step, find the place where there is less beer
+
+## Recursive equation
+
+?? HOW TO DO THIS ??

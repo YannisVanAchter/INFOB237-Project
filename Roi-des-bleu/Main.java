@@ -16,7 +16,6 @@ public class Main {
                     HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
                     String[] mapSize = br.readLine().strip().split(" ");
                     int nbLines = Integer.parseInt(mapSize[0]);
-                    int nbColumn = Integer.parseInt(mapSize[1]);
                     int beerLimit = Integer.parseInt(mapSize[2]);
 
                     for (int lineId = 0; lineId < nbLines; lineId++) {
