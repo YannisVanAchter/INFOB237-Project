@@ -10,6 +10,13 @@
 ### Map patern
 - Rectangle of the M x N defined in the description file
 
+### Move permissions
+- Move one node by one
+- Move allow:
+  - horizontally (right)
+  - vertically (down)
+  - diagonal (right and down)
+
 ### Output description
 - -1 if there is no solution
 - n° beer if there is at least one solution (if many, return the best solution)
