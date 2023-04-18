@@ -65,10 +65,6 @@ public class Solrecurs {
     String partieDroite = trouver_envahisseur(fleurs, (fin - debut)/2, fin);
     // Dans le cas d'un tab contenant un nombre impair de fleurs, partieDroite prendra en compte un élément supplémentaire que partieGauche
 
-    int EnvahisseurGauche = compterOccurence(fleurs, partieGauche, 0, fleurs.length/2);
-    int EnvahisseurDroite = compterOccurence(fleurs, partieDroite, fleurs.length/2, fleurs.length);
-
-
     // Comparer les résultats pour trouver l'envahisseur final 
     if (partieGauche == partieDroite) {
         return partieGauche;
@@ -76,17 +72,6 @@ public class Solrecurs {
     else{
       return partieDroite; // Car partieDroite prend en compte un élement en plus que PartieGauche
     } 
-  }
-
-  public static int compterOccurence (String[] tab, String elem, int start, int end)
-  {
-      int compteur = 0; 
-      for (int i=start; i< end; i++){
-          if (tab[i].equals(elem)){
-              compteur++;
-          }
-      }
-      return(compteur); 
   }
 
 }
