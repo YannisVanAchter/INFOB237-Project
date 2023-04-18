@@ -78,15 +78,4 @@ public class Solrecurs {
     } 
   }
 
-  public static int compterOccurence (String[] tab, String elem, int start, int end)
-  {
-      int compteur = 0; 
-      for (int i=start; i< end; i++){
-          if (tab[i].equals(elem)){
-              compteur++;
-          }
-      }
-      return(compteur); 
-  }
-
 }
