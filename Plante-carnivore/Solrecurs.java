@@ -61,8 +61,8 @@ public class Solrecurs {
     }
 
     // Sinon diviser pour régner 
-    String partieGauche = trouver_envahisseur(fleurs, 0, fleurs.length/2);
-    String partieDroite = trouver_envahisseur(fleurs, fleurs.length/2, fleurs.length);
+    String partieGauche = trouver_envahisseur(fleurs, debut, (fin - debut)/ 2);
+    String partieDroite = trouver_envahisseur(fleurs, (fin - debut)/2, fin);
     // Dans le cas d'un tab contenant un nombre impair de fleurs, partieDroite prendra en compte un élément supplémentaire que partieGauche
 
     int EnvahisseurGauche = compterOccurence(fleurs, partieGauche, 0, fleurs.length/2);
