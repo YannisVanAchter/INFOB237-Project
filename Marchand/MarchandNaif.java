@@ -4,29 +4,20 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 
 public class MarchandNaif {
 
-    public static void main(String[] args) throws FileNotFoundException {
-        try {
-
-            read_file("Marchand.txt");
-            int max_value = find_max_value(Items[], nb_items, poids_max)
-
-        } catch (FileNotFoundException e) {
-
-            System.out.println(e);
-
-        }    
+    public static void main(String[] args) {
+        
+        read_file("Marchand.txt"); 
+            
     }
 
 
     //lecture de fichier
-    public static void read_file(String nom_fichier) throws FileNotFoundException { 
+    public static void read_file(String nom_fichier) { 
         try {
             File fichier = new File(nom_fichier);
             Scanner myReader = new Scanner(fichier);
@@ -34,21 +25,19 @@ public class MarchandNaif {
             int i = 0; 
             int j = 0; 
 
-            if (myReader.hasNextLine()) {
 
-                String line = myReader.nextLine();
+                String line = myReader.nextLine().strip();
                 n = Integer.parseInt(line);
-            }
 
             while (i < n){
-                String line = myReader.nextLine();
+                line = myReader.nextLine().strip();
                 String[] parts = line.split(" ");
                 int nb_items = Integer.parseInt(parts[0]);
                 int poids_max = Integer.parseInt(parts[1]);
                 Items[] sac = new Items[nb_items];
 
                 while(j < nb_items){
-                    line = myReader.nextLine();
+                    line = myReader.nextLine().strip();
                     String[] tab = line.split(" ");
                     int valeur = Integer.parseInt(tab[0]);
                     int poids = Integer.parseInt(tab[1]);
@@ -56,9 +45,10 @@ public class MarchandNaif {
                     j++;
                 }
 
-                find_max_value(sac, nb_items, poids_max);
+                System.out.println(find_max_value(sac, nb_items, poids_max));
                 i++;
                 j = 0;
+
 
             }
         } catch (FileNotFoundException f) {
@@ -70,7 +60,7 @@ public class MarchandNaif {
 
     public static int find_max_value(Items[] items, int nb_items, int poids_max) {
         int max_value = 0;
-        for (int i = 0; i < (1 << nb_items); i++) { // boucle sur toutes les combinaisons possibles
+        for (int i = 0; i < (1 << nb_items); i++) { // boucle sur toutes les combinaisons possibles et (1 << nb_items) <=> 2^nb_items
             int value = 0;
             int weight = 0;
             for (int j = 0; j < nb_items; j++) {
