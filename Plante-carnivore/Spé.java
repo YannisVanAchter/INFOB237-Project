@@ -6,7 +6,7 @@ public class Main {
     /*@ public normal_behavior;
     @also 
     @exceptional_behavior                                    
-    @signals_only IOException; 
+    @signals IOException; 
     @*/
     public static void main(String[] args)
     {
