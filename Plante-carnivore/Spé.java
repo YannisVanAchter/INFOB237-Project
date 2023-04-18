@@ -6,7 +6,7 @@ public class Main {
     /*@ public normal_behavior;
     @also 
     @exceptional_behavior                                    
-    @signals_only IOException; 
+    @signals IOException; 
     @*/
     public static void main(String[] args)
     {
@@ -18,7 +18,6 @@ public class Main {
     @assignable compteur; 
     @*/  
     public static int compterOccurence (String[] tab, String elem){
-    {
     }
 
 
@@ -30,6 +29,4 @@ public class Main {
     public static void trouver_envahisseur(String[] fleurs)
     {
     }
-   }
-
 }
