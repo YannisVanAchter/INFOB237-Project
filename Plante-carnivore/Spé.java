@@ -18,7 +18,6 @@ public class Main {
     @assignable compteur; 
     @*/  
     public static int compterOccurence (String[] tab, String elem){
-    {
     }
 
 
@@ -30,6 +29,4 @@ public class Main {
     public static void trouver_envahisseur(String[] fleurs)
     {
     }
-   }
-
 }
