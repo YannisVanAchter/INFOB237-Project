@@ -1,7 +1,7 @@
 
 // Spécification du problème en utilisant JML 
 
-public class Main {
+public class Spé {
 
     /*@ public normal_behavior;
     @also 
@@ -16,6 +16,7 @@ public class Main {
     @requires tab[] != null && elem != null;
     @invariant compteur >= 0;
     @assignable compteur; 
+    @ensure \result == compteur
     @*/  
     public static int compterOccurence (String[] tab, String elem){
     }
