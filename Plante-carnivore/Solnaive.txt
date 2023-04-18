@@ -1,7 +1,13 @@
 Point 4: 
 La solution comporte 3 boucles : 1 while et 2 for 
 
-Pour la boucle while: 
+Pour la 1ère boucle for (au sein de trouver_envahisseur(String[] fleurs)):
+Variant de boucle: i
+Invariant de boucle: 0<=i<=fleurs.length
+
+Pour la 2ème boucle for (au sein de compterOccurence(String[] tab, String elem))
+Variant de boucle: i
+Invariant de boucle: 0<=i<=tab.length
 
 
 Point 5: 
