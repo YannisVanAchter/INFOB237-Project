@@ -12,7 +12,7 @@ Il y aura 5 lignes dans le fichier (soit (1) puis (2) puis (3) puis (2) puis (3)
 
 But : voir si une plante est envahissante (soit si pour le nombre de plantes M d'une ligne, une plante apparait > M/2 fois - dans ce cas là pour la ligne renvoie le nom de la plante envahissante, et sinon renvoie null) 
 
-Si il n'y a qu'une seule plante alors elle est envahissante (comme elle est strictement M/2 fois)
+S'il n'y a qu'une seule plante alors elle est envahissante (comme elle est strictement M/2 fois)
 
 
 
