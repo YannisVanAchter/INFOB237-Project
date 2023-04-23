@@ -1,6 +1,5 @@
 //Question 3
 
-//Cette solution naive a une complexite de O(2^n), ce qui la rend impraticable pour des ensembles de données de grande taille.
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,15 +10,11 @@ public class MarchandNaif {
 
     public static void main(String[] args) {
         
-        read_file("Marchand.txt"); 
-            
-    }
 
 
-    //lecture de fichier
-    public static void read_file(String nom_fichier) { 
+        //lecture de fichier
         try {
-            File fichier = new File(nom_fichier);
+            File fichier = new File("Marchand.txt");
             Scanner myReader = new Scanner(fichier);
             int n = 0; 
             int i = 0; 
@@ -58,29 +53,24 @@ public class MarchandNaif {
         
     }
 
-    public static int find_max_value(Items[] items, int nb_items, int poids_max) {
-        int max_value = 0;
-        for (int i = 0; i < (1 << nb_items); i++) { // boucle sur toutes les combinaisons possibles et (1 << nb_items) <=> 2^nb_items
-            int value = 0;
-            int weight = 0;
-            for (int j = 0; j < nb_items; j++) {
-                if ((i & (1 << j)) > 0) { // si l'objet est dans la combinaison
-                    value += items[j].getValeur();
-                    weight += items[j].getPoids();
-                }
+    public static int find_max_value(Items[] bag, int nb_items, int poids_max) {
+        int valeurMax = 0; 
+        int subtab = (int) Math.pow(2, nb_items); //création d'une sous-liste et Math.pow = fct en java qui permet de calculer une puissance à l'aide d'une base et d'un exposant 
+        for (int i = 0; i < subtab; i++) {
+            int current_pd = 0;
+            int current_val = 0; 
+            for (int j = 0; j < nb_items; j++){
+                if (((i >> j) & 1) == 1) { // si on rajoute un élément 
+                    current_pd += bag[j].getPoids();
+                    current_val += bag[j].getValeur();
+                } 
             }
-            if (weight <= poids_max && value > max_value) { // si la combinaison respecte le poids maximal et que la valeur est plus élevée que la valeur maximale actuelle
-                max_value = value;
+            if (current_pd <= poids_max && current_val > valeurMax){
+                return current_val = valeurMax;
             }
-        }
-        System.out.println(max_value);
-        return max_value;
+        }      
+        return 0;
     }
 
 }
 
-/*
-L'operateur << est l'operateur de decalage a gauche en Java. L'expression (1 << nb_items) signifie que l'on decale le nombre binaire 1 de nb_items bits vers la gauche. 
-En d'autres termes, cela revient a elever 2 a la puissance nb_items. Par exemple, si nb_items vaut 3, alors (1 << nb_items) vaut 8
-car 1 (en binaire: 0001) decale de 3 bits vers la gauche donne 1000 (en binaire: 1000), qui represente le nombre 8 en base 10.
- */
