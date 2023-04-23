@@ -49,7 +49,7 @@ public class Main {
      */
     public static int findBestPath(HashMap<Integer, ArrayList<Integer>> map, int beerLimit) {
         int best = findBestPath(map, beerLimit, 0, 0, 0);
-        if (best > beerLimit || best == 0)
+        if (best > beerLimit || best <= 0)
             return -1;
         return best;
     }
@@ -71,24 +71,30 @@ public class Main {
             return currentBeer;
 
         // new horizontal position
-        int beerHorizontal = Integer.MAX_VALUE;
+        int beerHorizontal = Integer.MIN_VALUE;
         if (currentColumnId + 1 < map.get(0).size())
             beerHorizontal = findBestPath(map, beerLimit, currentColumnId + 1, currentRowId, currentBeer);
+        if (beerHorizontal > beerLimit)
+            beerHorizontal = Integer.MIN_VALUE;
 
         // new vertical position
-        int beerVertical = Integer.MAX_VALUE;
+        int beerVertical = Integer.MIN_VALUE;
         if (currentRowId + 1 < map.size())
             beerVertical = findBestPath(map, beerLimit, currentColumnId, currentRowId + 1, currentBeer);
+        if (beerVertical > beerLimit)
+            beerVertical = Integer.MIN_VALUE;
 
         // new diagonal position
-        int beerDiagonal = Integer.MAX_VALUE;
+        int beerDiagonal = Integer.MIN_VALUE;
         if (currentColumnId + 1 < map.get(0).size() && currentRowId + 1 < map.size())
             beerDiagonal = findBestPath(map, beerLimit, currentColumnId + 1, currentRowId + 1, currentBeer);
+        if (beerDiagonal > beerLimit)
+            beerDiagonal = Integer.MIN_VALUE;
 
         // get best option
-        return Math.min(
+        return Math.max(
             beerVertical,
-            Math.min(
+            Math.max(
                 beerHorizontal,
                 beerDiagonal
             )

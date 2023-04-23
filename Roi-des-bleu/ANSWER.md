@@ -21,6 +21,9 @@
 - -1 if there is no solution
 - n° beer if there is at least one solution (if many, return the best solution)
 
+### Ambiguity
+- We don't want to find a solution where we drink less beer, but the most and stay under the limit
+
 
 ### Description file patern
 - N° of map description in the current file
