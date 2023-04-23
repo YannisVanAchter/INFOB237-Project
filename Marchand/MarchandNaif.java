@@ -5,13 +5,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-
 public class MarchandNaif {
 
     public static void main(String[] args) {
         
-
-
         //lecture de fichier
         try {
             File fichier = new File("Marchand.txt");
@@ -36,7 +33,7 @@ public class MarchandNaif {
                     String[] tab = line.split(" ");
                     int valeur = Integer.parseInt(tab[0]);
                     int poids = Integer.parseInt(tab[1]);
-                    sac[j] = new Items(valeur, poids);
+                    sac[j] = new ItemsNaif(valeur, poids);
                     j++;
                 }
 
