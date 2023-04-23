@@ -23,3 +23,5 @@ public class SpecificationsNaif {
         //return 0
     }
 
+
+}
