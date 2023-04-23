@@ -52,12 +52,12 @@ public class MarchandNaif {
 
     public static int find_max_value(Items[] bag, int nb_items, int poids_max) {
         int valeurMax = 0; 
-        int subtab = (int) Math.pow(2, nb_items); //création d'une sous-liste et Math.pow = fct en java qui permet de calculer une puissance à l'aide d'une base et d'un exposant 
+        int subtab = (int) Math.pow(2, nb_items); //Math.pow = fct en java qui permet de calculer une puissance à l'aide d'une base et d'un exposant 
         for (int i = 0; i < subtab; i++) {
             int current_pd = 0;
             int current_val = 0; 
             for (int j = 0; j < nb_items; j++){
-                if (((i >> j) & 1) == 1) { // si on rajoute un élément 
+                if (((i >> j) & 1) == 1) { //permet de générer les sous-ensemble d'une liste en se basant sur les bits 
                     current_pd += bag[j].getPoids();
                     current_val += bag[j].getValeur();
                 } 
