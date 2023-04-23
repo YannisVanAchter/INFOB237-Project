@@ -3,12 +3,12 @@ Invariants et variants de boucles
 Algo Naïf :
 
 for (int i = 0; i < subtab; i++) {}
-Invariant ==> i est un entier, subtab l'est aussi et est non null 
+Invariant ==> i est un entier se trouvant entre 0 (compris) et subtab (non compris), subtab l'est aussi et est non null 
 Variant ==> l'entier i augmente à chaque itération 
 Terminaison ==> lorsque i est égal à subtab 
 
 for (int j = 0; j < nb_items; j++) {}
-Invariant ==> j est un entier, nb_items est un entier et non null 
+Invariant ==> j est un entier se trouvant entre 0 (compris) et nb_items (no compris), nb_items est un entier et non null 
 Variant ==> l'entier j augmente à chaque itération 
 Terminaison ==> lorsque j est égal à nb_items
 
@@ -19,7 +19,7 @@ PREUVE PAS COMPRIS
 Algo Glouton :
 
 for (int i = 0; i < nbritems; i++) {}
-Invariant ==> i est un entier, nbritems l'est aussi et est non null 
+Invariant ==> i est un entier se trouvant entre 0 (compris) et nbritems (non compris), nbritems l'est aussi et est non null 
 Variant ==> l'entier i augmente à chaque itération 
 Terminaison ==> lorsque i est égal à nbritems  
 
@@ -29,7 +29,7 @@ Variant ==> on itère sur chaque str
 Terminaison ==> quand on a parcouru tous les str possibles 
 
 for (int j = 0; j < nbritems; j++) {}
-Invariant ==> j est un entier, nbritems est un entier et non null  
+Invariant ==> j est un entier se trouvant entre 0 (compris) et nbritems (no compris), nbritems est un entier et non null  
 Variant ==> l'entier j augmente à chaque itération 
 Terminaison ==> lorsque j est égal à nbritems
 
