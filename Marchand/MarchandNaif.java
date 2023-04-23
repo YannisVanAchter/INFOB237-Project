@@ -11,7 +11,7 @@ public class MarchandNaif {
         
         //lecture de fichier
         try {
-            File fichier = new File("Marchand.txt");
+            File fichier = new File("Marchand.txt"); //pathname du fichier 
             Scanner myReader = new Scanner(fichier);
             int n = 0; 
             int i = 0; 
