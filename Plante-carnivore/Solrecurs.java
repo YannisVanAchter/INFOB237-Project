@@ -39,7 +39,6 @@ public class Solrecurs {
         EnvahisseursChamp.add(trouver_envahisseur(plantes, 0, plantes.length)); 
       }
  
-
       fr.close();
       return(EnvahisseursChamp);
     }
@@ -50,7 +49,6 @@ public class Solrecurs {
     }
   
   return(new ArrayList<String>());
- 
   }
 
   public static String trouver_envahisseur(String[] fleurs, int debut, int fin)
@@ -61,8 +59,8 @@ public class Solrecurs {
     }
 
     // Sinon diviser pour régner 
-    String partieGauche = trouver_envahisseur(fleurs, debut, (fin - debut)/ 2);
-    String partieDroite = trouver_envahisseur(fleurs, (fin - debut)/2, fin);
+    String partieGauche = trouver_envahisseur(fleurs, debut, (fin-debut)/ 2);
+    String partieDroite = trouver_envahisseur(fleurs, (fin-debut)/2, fin);
     // Dans le cas d'un tab contenant un nombre impair de fleurs, partieDroite prendra en compte un élément supplémentaire que partieGauche
 
     // Comparer les résultats pour trouver l'envahisseur final 
