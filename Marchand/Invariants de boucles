@@ -1,3 +1,0 @@
-Invariant de boucle1 : 0 <= i <= (1 << nb_items) && max_value >= 0;
-
-Invariant de boucle2 : 0 <= j <= nb_items && value >= 0 && weight >= 0; 

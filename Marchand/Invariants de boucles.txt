@@ -1,0 +1,37 @@
+Invariants et variants de boucles 
+
+Algo Naïf :
+
+for (int i = 0; i < subtab; i++) {}
+Invariant ==> i est un entier, subtab l'est aussi et est non null 
+Variant ==> l'entier i augmente à chaque itération 
+Terminaison ==> lorsque i est égal à subtab 
+
+for (int j = 0; j < nb_items; j++) {}
+Invariant ==> j est un entier, nb_items est un entier et non null 
+Variant ==> l'entier j augmente à chaque itération 
+Terminaison ==> lorsque j est égal à nb_items
+
+
+PREUVE PAS COMPRIS 
+
+
+Algo Glouton :
+
+for (int i = 0; i < nbitem; i++) {}
+Invariant ==> i est un entier, nbitem l'est aussi et est non null 
+Variant ==> l'entier i augmente à chaque itération 
+Terminaison ==> lorsque i est égal à nbitem  
+
+for (Items str : value) {} 
+Invariant ==> tous les str sont de type Items et se trouvent dans value
+Variant ==> on itère sur chaque str
+Terminaison ==> quand on a parcouru tous les str possibles 
+
+for (int j = 0; j < nbitem; j++) {}
+Invariant ==> j est un entier, nbitem est un entier et non null  
+Variant ==> l'entier j augmente à chaque itération 
+Terminaison ==> lorsque j est égal à nbitem
+
+PREUVE PAS COMPRIS 
+
