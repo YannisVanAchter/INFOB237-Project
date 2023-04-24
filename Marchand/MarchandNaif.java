@@ -4,6 +4,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+// import ItemsNaif;
 
 public class MarchandNaif {
 
@@ -11,7 +12,7 @@ public class MarchandNaif {
         
         //lecture de fichier
         try {
-            File fichier = new File("Marchand.txt"); //pathname du fichier 
+            File fichier = new File("./Marchand.txt"); //pathname du fichier 
             Scanner myReader = new Scanner(fichier);
             int n = 0; 
             int i = 0; 
@@ -26,7 +27,7 @@ public class MarchandNaif {
                 String[] parts = line.split(" ");
                 int nb_items = Integer.parseInt(parts[0]);
                 int poids_max = Integer.parseInt(parts[1]);
-                Items[] sac = new Items[nb_items];
+                ItemsNaif[] sac = new ItemsNaif[nb_items];
 
                 while(j < nb_items){
                     line = myReader.nextLine().strip();
@@ -50,7 +51,7 @@ public class MarchandNaif {
         
     }
 
-    public static int find_max_value(Items[] bag, int nb_items, int poids_max) {
+    public static int find_max_value(ItemsNaif[] bag, int nb_items, int poids_max) {
         int valeurMax = 0; 
         int subtab = (int) Math.pow(2, nb_items); //Math.pow = fct en java qui permet de calculer une puissance à l'aide d'une base et d'un exposant 
         for (int i = 0; i < subtab; i++) {
@@ -66,7 +67,8 @@ public class MarchandNaif {
                 return current_val = valeurMax;
             }
         }      
-        return 0;
+        
+        return -1;
     }
 
 }

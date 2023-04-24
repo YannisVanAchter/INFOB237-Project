@@ -7,29 +7,26 @@ import java.util.Scanner;
 
 public class Glouton {
     public static void main(String[] args) throws FileNotFoundException {
-        File fichier = new File("Marchand.txt");//attention pathname 
+        File fichier = new File("./Marchand.txt");//attention pathname 
         Scanner myReader = new Scanner(fichier);
         int n = 0;
         int i = 0;
         int j = 0;
 
         if (myReader.hasNextLine()) {
-
-            String line = myReader.nextLine();
+            String line = myReader.nextLine().strip();
             n = Integer.parseInt(line);
         }
 
         while (i < n){
-            String line = myReader.nextLine();
-            //System.out.println("coucou" + line);
+            String line = myReader.nextLine().strip();
             String[] parts = line.split(" ");
             int nb_items = Integer.parseInt(parts[0]);
             int poids_max = Integer.parseInt(parts[1]);
             Items[] sac = new Items[nb_items];
 
             while(j < nb_items){
-                line = myReader.nextLine();
-                //System.out.println(line);
+                line = myReader.nextLine().strip();
                 String[] tab = line.split(" ");
                 int valeur = Integer.parseInt(tab[0]);
                 int poids = Integer.parseInt(tab[1]);
@@ -37,8 +34,9 @@ public class Glouton {
                 sac[j] = new Items(valeur, poids, VperW);
                 j++;
             }
-
-            find_max_value(sac, nb_items, poids_max);
+        
+        // System.out.println(sac);
+            System.out.println(find_max_value(sac, nb_items, poids_max));
             i++;
             j = 0;
 
@@ -54,9 +52,9 @@ public class Glouton {
 
         Collections.sort(value, Items.VperWcomparator); //trier les objets dans l'ordre décroissant
 
-        for (Items str : value) {
-            System.out.println(str);
-        }
+        // for (Items str : value) {
+        //     System.out.println(str);
+        // }
 
         // initialisation 
         int current_poids = 0;
@@ -78,7 +76,6 @@ public class Glouton {
                 break;
             }
         }
-        System.out.println(valeur_totale);
 
         return valeur_totale;
     }

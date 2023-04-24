@@ -64,11 +64,12 @@ public class Solrecurs {
     // Dans le cas d'un tab contenant un nombre impair de fleurs, partieDroite prendra en compte un élément supplémentaire que partieGauche
 
     // Comparer les résultats pour trouver l'envahisseur final 
+
     if (partieGauche == partieDroite) {
-        return partieGauche;
+        return partieDroite;
     }
     else{
-      return partieDroite; // Car partieDroite prend en compte un élement en plus que PartieGauche
+      return partieGauche; // Car partieDroite prend en compte un élement en plus que PartieGauche
     } 
   }
 
