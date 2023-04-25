@@ -60,7 +60,7 @@ WAIT FOR SIMON
 O(n^3)
 
 ## Optimal sub-structure of the solution
-Start from the end of the path
+Start from the end of the board
 
 Go one step upwards at a time until the solution (be back to the beginning)
 

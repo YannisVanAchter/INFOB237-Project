@@ -15,7 +15,7 @@ public class Spec {
      * @requires 0 <= beerLimit;
      * @requires 0 <= currentBeer <= beerLimit;
      * 
-     * @ensure \result = \min(\new(currentBeer), )
+     * @ensure \result = \max(\new(currentBeer), )
      */
     public static int findBestPath(
         HashMap<Integer, ArrayList<Integer>> map,
