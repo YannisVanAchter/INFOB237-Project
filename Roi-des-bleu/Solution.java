@@ -1,12 +1,13 @@
 
 // import java.util.*;
 import java.io.*;
+import java.util.ArrayList;
 
 public class Solution {
 
     public static void print(Object s)
     {
-        System.out.println(s.toString());
+        // System.out.println(s.toString());
     }
     public static void main(String[] args) {
         try {
@@ -42,7 +43,7 @@ public class Solution {
                     print("Map.length = " + map.length);
                     print("Map[0].length = " + map[0].length);
 
-                    System.out.println(findBestPath(map, beerLimit, nbColumns - 1, nbLines -1 ));
+                    System.out.println("Final value: " + findBestPath(map, beerLimit, nbColumns, nbLines));
                 }
 
                 br.close();
@@ -55,51 +56,66 @@ public class Solution {
     }
 
     public static int findBestPath(int[][] map, int beerLimit, int maxColumns, int maxLines) {
+        System.out.println("Processing");
         print("Beer limit: " + beerLimit);
         print("Maximum lines: " + maxLines);
         print("Maximum column: " + maxColumns);
 
-        int[][] sum = new int[maxColumns][maxLines];
-        // sum = ExploreGraph(map, beerLimit, maxColumns, maxLines, sum, maxColumns, maxLines);
-        for (int currentLine = maxLines; currentLine > 0; currentLine--) {
+        // build summed map
+        ArrayList<ArrayList<Integer>> sum = new ArrayList<>(maxLines);
+        for (int i = 0;  i < maxLines + 1; i++) {
+            sum.add(new ArrayList<Integer>(maxColumns));
+            for (int j = 0; j < maxColumns + 1; j++)
+                sum.get(i).add(0);
+        }
+        
+        // add values from the map to the sum, take  the minimum at first.
+        for (int currentLine = maxLines - 1; currentLine >= 0; currentLine--) {
             print("Current line: " + currentLine);
-            for (int currentColumn = maxColumns; currentColumn > 0; currentColumn--) {
+            for (int currentColumn = maxColumns - 1; currentColumn >= 0; currentColumn--) {
                 print("Current column: " + currentColumn);
+                print("Processing coordinates: (" + currentLine + ", " + currentColumn + ")");
+                print("Value: " + map[currentLine][currentColumn]);
                 int previousVertical = Integer.MAX_VALUE;
-                if (currentColumn < maxColumns)
+                if (currentColumn < maxColumns - 1)
                 {
-                    previousVertical = sum[currentLine][currentColumn + 1];
+                    previousVertical = sum.get(currentLine ).get(currentColumn + 1);
                 }
 
                 int previousHorizontal = Integer.MAX_VALUE;
-                if (currentLine < maxLines)
+                if (currentLine < maxLines - 1)
                 {
-                    previousHorizontal = sum[currentLine + 1][currentColumn];
+                    previousHorizontal = sum.get(currentLine + 1).get(currentColumn);
                 }
 
                 int previousDiagonal = Integer.MAX_VALUE;
-                if (currentLine < maxLines && currentColumn < maxColumns)
+                if (currentLine < maxLines - 1 && currentColumn < maxColumns - 1)
                 {
-                    previousDiagonal = sum[currentLine + 1][currentColumn + 1];
+                    previousDiagonal = sum.get(currentLine + 1).get(currentColumn + 1);
                 }
 
-                sum[currentLine][currentColumn] = map[currentLine][currentColumn];
-                if (currentLine < maxLines && currentColumn < maxColumns)
-                // if not in last line: add minimum
-                    sum[currentLine][currentColumn] += Math.min(previousDiagonal, Math.min(previousHorizontal, previousVertical));
+                int currentTemp = map[currentLine][currentColumn];
+                if (currentLine < maxLines - 1 || currentColumn < maxColumns - 1)
+                    // if not in last line and column: add minimum
+                    currentTemp += Math.min(previousDiagonal, Math.min(previousHorizontal, previousVertical));
+                sum.get(currentLine).set(currentColumn, currentTemp);
+
+                // print int the oposit order because we start from the end and go to the beginning
+                System.out.print(sum.get(currentLine).get(currentColumn) + "-");
             }
+            System.out.println();
         }
 
-        if (sum[0][0] > beerLimit)
+        if (sum.get(0).get(0) > beerLimit)
             return -1;
         // by using the minimum value we can consider the maximum value to be acceptable is already computed
-        if (sum[0][0] == beerLimit)
-            return sum[0][0];
+        if (sum.get(0).get(0) == beerLimit)
+            return sum.get(0).get(0);
         
         // get path where we drink the most beer and stay under the limit
         
         System.out.println("TOBE IMPLEMENT");
-        return sum[0][0];
+        return sum.get(0).get(0);
     }
 
     // private static int[][] ExploreGraph(int[][] map, int beerLimit, int maxColumn, int maxLine, int[][] sum,
