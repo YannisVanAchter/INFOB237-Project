@@ -45,14 +45,14 @@ public class Glouton {
 
     public static int findMaxValue(Items[] bag, int nbritems, int maxpoids) {
 
-        ArrayList<Items> value = new ArrayList<Items>();
+        ArrayList<Items> products = new ArrayList<Items>();
         for (int i = 0; i < nbritems; i++) { //boucle pour ajouter un élément du sac dans la liste 
-            value.add(bag[i]);
+            products.add(bag[i]);
         }
 
-        Collections.sort(value, Items.VperWcomparator); //trier les objets dans l'ordre décroissant
+        Collections.sort(products, Items.VperWcomparator); //trier les objets dans l'ordre décroissant
 
-        // for (Items str : value) {
+        // for (Items str : products) {
         //     System.out.println(str);
         // }
 
@@ -63,7 +63,7 @@ public class Glouton {
         int valeur_totale = 0;
 
         for (int j = 0; j < nbritems; j++) { 
-            Items current_item = value.get(j); // l'objet actuel a une valeur et un poids actuel 
+            Items current_item = products.get(j); // l'objet actuel a une valeur et un poids actuel 
             current_poids = current_item.getPoids();
             current_valeur = current_item.getValeur();
             if (poids_total + current_poids <= maxpoids) { // si le poids total + le poids actuel sont plus petit ou égal au poids maximum 
