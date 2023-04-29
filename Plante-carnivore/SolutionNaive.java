@@ -3,7 +3,13 @@ import java.io.*;
 
 // Sol naive 
 
-public class Solnaive {
+public class solutionNaive {
+
+    /*@ public normal_behavior;
+    @also 
+    @exceptional_behavior                                    
+    @signals IOException; 
+    @*/
     public static void main(String args[])
   {
     try
@@ -20,13 +26,13 @@ public class Solnaive {
 
       int i = 0; 
     
-        // Lit les nx2 lignes suivantes du fichier
+      // Lit les nx2 lignes suivantes du fichier
       while (i < n){
         br.readLine(); 
         String m_plantes = br.readLine(); 
         // Crée le tableau contenant les plantes
         String[]plantes = m_plantes.split(", "); 
-        trouver_envahisseur(plantes);
+        trouverEnvahisseur(plantes);
         i+=1; 
       }
 
@@ -39,7 +45,13 @@ public class Solnaive {
     }
   }
 
-    public static void trouver_envahisseur(String[] fleurs)
+
+    /*@ public normal_behavior;  
+    @requires fleurs != null && fleurs.length > 0; 
+    @invariant compteur >= 0;  
+    @assignable compteur, fleurEnvahissante; 
+    @*/
+    public static void trouverEnvahisseur(String[] fleurs)
     {  
         ArrayList<String> fleurEnvahissante = new ArrayList<>();
     
@@ -60,6 +72,13 @@ public class Solnaive {
         }  
     }
 
+
+   /*@ public normal_behavior;
+    @requires tab[] != null && elem != null;
+    @invariant compteur >= 0;
+    @assignable compteur; 
+    @ensure \result == compteur
+    @*/  
     public static int compterOccurence (String[] tab, String elem){
         int compteur = 0; 
         for (int i=0; i< tab.length; i++){
