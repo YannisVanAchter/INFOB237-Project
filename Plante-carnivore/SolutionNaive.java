@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.io.*; 
 
-// Sol naive 
-
 public class solutionNaive {
 
     /*@ public normal_behavior;
@@ -14,23 +12,20 @@ public class solutionNaive {
   {
     try
     {
-      // Le fichier du champ contenant toutes les fleurs 
+      // File contained all flowers
       File file = new File("champ.txt");
-      // Créer l'objet File Reader
       FileReader fr = new FileReader(file);
-      // Créer l'objet BufferedReader
       BufferedReader br = new BufferedReader(fr);
-      // Voit combien il y a de lignes dans le champ
-      String nombreLignes = br.readLine();
-      int n = Integer.parseInt(nombreLignes);
+      // See how many rows of flowers there are in the field  
+      String numberRows = br.readLine();
+      int n = Integer.parseInt(numberRows);
 
       int i = 0; 
     
-      // Lit les nx2 lignes suivantes du fichier
+      // Read the 2*n rows following in the file
       while (i < n){
         br.readLine(); 
         String m_plantes = br.readLine(); 
-        // Crée le tableau contenant les plantes
         String[]plantes = m_plantes.split(", "); 
         trouverEnvahisseur(plantes);
         i+=1; 
