@@ -6,7 +6,10 @@ import java.io.*;
 public class diviserPourRegner {
 
     public static void main(String args[]) {
-        lectureFichier(args);
+        ArrayList<String> Envahisseurs = lectureFichier(args);
+        for (String envahisseur: Envahisseurs){
+            System.out.println(envahisseur);
+        }
     }
 
     public static ArrayList<String> lectureFichier(String args[]) {
@@ -22,50 +25,63 @@ public class diviserPourRegner {
 
             ArrayList<String> EnvahisseursChamp = new ArrayList<>();
 
-            // Lit les 2*n lignes suivantes du fichier
             while (i < n) {
                 br.readLine();
                 String m_plantes = br.readLine();
-                // Crée le tableau contenant les plantes
+                // Create an array with the plants of the row
                 String[] plantes = m_plantes.split(", ");
+                EnvahisseursChamp.add(trouver_envahisseur(plantes, 0, plantes.length-1)); 
                 i += 1;
-
-                try {
-                    EnvahisseursChamp.add(trouver_envahisseur(plantes, 0, plantes.length-1));
-                } catch (Exception e){
-                    System.err.println(e);
-                }
-               
             }
 
             fr.close();
             return (EnvahisseursChamp);
+
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
 
         return (new ArrayList<String>());
     }
 
     public static String trouver_envahisseur(String[] fleurs, int debut, int fin) {
-        // Cas de base : 1 seule fleur dans le tableau
+        // If there is only one flower in the array (base case)
         if (debut == fin) { 
             return fleurs[debut];
         }
        
-        // Sinon diviser pour régner
+        // Else divide and conquer
         int milieu = (debut + fin) / 2;
         String partieGauche = trouver_envahisseur(fleurs, debut, milieu);
-
         String partieDroite = trouver_envahisseur(fleurs, milieu + 1, fin);
 
 
-        // Comparer les résultats pour trouver l'envahisseur final
+        // Compare results obtained to find the final invasive plant if it exists
         if (partieGauche.equals(partieDroite)) {
-            return partieDroite;
-        } else {
             return partieGauche;
-        }
+        } else{
+            // If the two sides didn't find the same invasive plant, we have to count the occurence of the flowers
+            int compteurPartieGauche = 0; 
+            int compteurPartieDroite = 0; 
+            for (int i = debut; i<= fin; i++){
+                if (fleurs[i].equals(partieGauche)){
+                    compteurPartieGauche += 1;
+                }  
+
+                if (fleurs[i].equals(partieDroite)){
+                    compteurPartieDroite +=1; 
+                }
+            }
+
+            if (compteurPartieGauche > (milieu+1)){
+                return partieGauche;
+            }
+            if (compteurPartieDroite > (milieu+1)){
+                return partieDroite; 
+            }  
+        } 
+        return("null");
+    
     }
 
 }

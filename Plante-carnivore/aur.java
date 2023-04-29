@@ -4,7 +4,7 @@ import java.io.*;
 public class aur {
 
     public static void main(String args[]) {
-        String[] plantes = {"Rose", "Tulipe", "Marguerite", "Rose", "Tulipe", "Tulipe", "Tulipe", "Tulipe"};
+        String[] plantes = {"Rose", "Tulipe", "Marguerite", "Rose", "Tulipe"};
         ArrayList<String> EnvahisseursChamp = new ArrayList<>();
         EnvahisseursChamp.add(trouver_envahisseur(plantes, 0, plantes.length-1));
         System.out.println("FINITO");
@@ -46,7 +46,7 @@ public class aur {
                 } else if (compteurDroite > (fin - debut + 1) / 2) {
                     return partieDroite;
                 } else {
-                    return null;
+                    return ("null");
                 }      
             }
     }
