@@ -113,39 +113,51 @@ public class Solution {
             return sum.get(0).get(0);
         
         // get path where we drink the most beer and stay under the limit
+        for (int currentLine = 0; currentLine < maxLines; currentLine++) {
+            print("Current line: " + currentLine);
+            for (int currentColumn = 0; currentColumn < maxColumns; currentColumn++) {
+                print("Current column: " + currentColumn);
+                print("Processing coordinates: (" + currentLine + ", " + currentColumn + ")");
+                print("Value: " + map[currentLine][currentColumn]);
+
+                int currentTemp = map[currentLine][currentColumn];
+                
+                if (currentTemp > beerLimit)
+                    sum.get(currentLine).set(currentColumn, Integer.MIN_VALUE);
+                else {
+
+                    int previousVertical = Integer.MIN_VALUE;
+                    if (currentColumn > 0)
+                        previousVertical = sum.get(currentLine ).get(currentColumn - 1);
+                    if (previousVertical + currentTemp > beerLimit || previousVertical < 0)
+                        previousVertical = Integer.MIN_VALUE;
+
+                    int previousHorizontal = Integer.MIN_VALUE;
+                    if (currentLine > 0)
+                        previousHorizontal = sum.get(currentLine - 1).get(currentColumn);
+                    if (previousHorizontal + currentTemp > beerLimit || previousHorizontal < 0)
+                        previousHorizontal = Integer.MIN_VALUE;
+
+                    int previousDiagonal = Integer.MIN_VALUE;
+                    if (currentLine > 0 && currentColumn > 0)
+                        previousDiagonal = sum.get(currentLine - 1).get(currentColumn - 1);
+                    if (previousDiagonal + currentTemp > beerLimit || previousDiagonal < 0)
+                        previousDiagonal = Integer.MIN_VALUE;
+
+                    if (currentLine > 0 || currentColumn > 0)
+                        // if not in last line and column: add minimum
+                        currentTemp += Math.max(previousDiagonal, Math.max(previousHorizontal, previousVertical));
+                    sum.get(currentLine).set(currentColumn, currentTemp);
+                }
+                print("Current sum: " + sum.get(currentLine).get(currentColumn));
+                // print int the opposit order because we start from the end and go to the beginning
+                System.out.print(sum.get(currentLine).get(currentColumn) + "-");
+            }
+            System.out.println();
+        }
         
-        System.out.println("TOBE IMPLEMENT");
-        return sum.get(0).get(0);
+        if (sum.get(0).get(0) > beerLimit || sum.get(0).get(0) < 0)
+            return -1;
+        return sum.get(maxLines - 1).get(maxColumns - 1);
     }
-
-    // private static int[][] ExploreGraph(int[][] map, int beerLimit, int maxColumn, int maxLine, int[][] sum,
-    //         int currentColumn, int currentLines) {
-        
-    //     if (currentLines == maxLine && currentColumn == maxColumn)
-    //     {
-    //         sum[currentLines][currentColumn] = map[currentLines][currentColumn];
-    //     }
-    //     else if (currentLines >= 0 && currentColumn >= 0)
-    //     {
-    //         int previousVertical = Integer.MAX_VALUE;
-    //         if (currentColumn < maxLine)
-    //         {
-    //             previousVertical = sum[currentLines][currentColumn + 1];
-    //         }
-    //         int previousHorizontal = Integer.MAX_VALUE;
-    //         if (currentLines < maxLine)
-    //         {
-    //             previousHorizontal = sum[currentLines + 1][currentColumn];
-    //         }
-    //         int previousDiagonal = Integer.MAX_VALUE;
-    //         if (currentLines < maxLine && currentColumn < maxLine)
-    //         {
-    //             previousDiagonal = sum[currentLines + 1][currentColumn + 1];
-    //         }
-
-    //         sum[currentLines][currentColumn] = map[currentLines][currentColumn] + Math.min(previousDiagonal, Math.min(previousHorizontal, previousVertical));
-    //     }
-
-    //     return sum;
-    // }
 }
