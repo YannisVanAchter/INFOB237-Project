@@ -10,10 +10,9 @@ O(n) = complexité de la boucle if
 
 Algo Glouton : 
 O(nbritems) = complexité de la boucle for
-O(n) = complexité de la boucle for each
-O(n) = complexité de la boucle for 
-O(n) = complexité de la boucle for et du if imbriqué 
+(O(n) = complexité de la boucle for each)
+O(nbritems) = complexité de la boucle for et du if imbriqué 
 
-==> complexité algo Glouton = O(n)
+==> complexité algo Glouton = O(nbritems)
 
 
