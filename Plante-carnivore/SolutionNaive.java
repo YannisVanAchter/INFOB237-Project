@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.io.*; 
 
+
+// Goal : to see if a plant is invasive (for each row of M plants, if a plant appears > M/2 times )
+// If there is only a plant, it is invasive (because it appears > M/2 times)
+
+
 public class solutionNaive {
 
     /*@ public normal_behavior;
