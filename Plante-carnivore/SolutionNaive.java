@@ -1,32 +1,33 @@
 import java.util.ArrayList;
 import java.io.*; 
 
-// Sol naive 
+public class solutionNaive {
 
-public class Solnaive {
+    /*@ public normal_behavior;
+    @also 
+    @exceptional_behavior                                    
+    @signals IOException; 
+    @*/
     public static void main(String args[])
   {
     try
     {
-      // Le fichier du champ contenant toutes les fleurs 
+      // File contained all flowers
       File file = new File("champ.txt");
-      // Créer l'objet File Reader
       FileReader fr = new FileReader(file);
-      // Créer l'objet BufferedReader
       BufferedReader br = new BufferedReader(fr);
-      // Voit combien il y a de lignes dans le champ
-      String nombreLignes = br.readLine();
-      int n = Integer.parseInt(nombreLignes);
+      // See how many rows of flowers there are in the field  
+      String numberRows = br.readLine();
+      int n = Integer.parseInt(numberRows);
 
       int i = 0; 
     
-        // Lit les nx2 lignes suivantes du fichier
+      // Read the 2*n rows following in the file
       while (i < n){
         br.readLine(); 
         String m_plantes = br.readLine(); 
-        // Crée le tableau contenant les plantes
         String[]plantes = m_plantes.split(", "); 
-        trouver_envahisseur(plantes);
+        trouverEnvahisseur(plantes);
         i+=1; 
       }
 
@@ -39,7 +40,13 @@ public class Solnaive {
     }
   }
 
-    public static void trouver_envahisseur(String[] fleurs)
+
+    /*@ public normal_behavior;  
+    @requires fleurs != null && fleurs.length > 0; 
+    @invariant compteur >= 0;  
+    @assignable compteur, fleurEnvahissante; 
+    @*/
+    public static void trouverEnvahisseur(String[] fleurs)
     {  
         ArrayList<String> fleurEnvahissante = new ArrayList<>();
     
@@ -60,6 +67,13 @@ public class Solnaive {
         }  
     }
 
+
+   /*@ public normal_behavior;
+    @requires tab[] != null && elem != null;
+    @invariant compteur >= 0;
+    @assignable compteur; 
+    @ensure \result == compteur
+    @*/  
     public static int compterOccurence (String[] tab, String elem){
         int compteur = 0; 
         for (int i=0; i< tab.length; i++){
