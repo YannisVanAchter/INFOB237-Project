@@ -1,3 +1,14 @@
+Point 1: Analyser l'énoncé 
+
+- Algo prend en entrée en fichier 
+- 1ère ligne du fichier est le nombre de lignes n du champs (1) 
+- Ensuite, il y a 2*n lignes dans le fichier 
+  la première contient le nombre de fleurs sur la ligne (2) 
+  la deuxième contient le détail de ces fleurs (3) 
+
+Ainsi si n = 2 
+Il y aura 5 lignes dans le fichier (soit (1) puis (2) puis (3) puis (2) puis (3) 
+
 Point 4: 
 La solution comporte  2 boucles for 
 
@@ -13,8 +24,7 @@ Invariant de boucle: 0<=i<=tab.length
 Point 5: 
 On ne prend pas en compte ici la partie de lecture de fichier 
 
-
 trouver_envahisseur() appelle au sein d'une boucle for n fois compterOccurence()
 compterOccurence() comprend aussi une boucle for qui itère n fois 
 
-Ainsi, c'est comme-ci on avait 2 boucles imbriquées ce qui fait que la complexité est de O(n^2)
+Ainsi, c'est comme si on avait 2 boucles imbriquées ce qui fait que la complexité est de O(n^2)

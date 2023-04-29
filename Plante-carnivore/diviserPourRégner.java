@@ -4,7 +4,7 @@ import java.io.*;
 // Sol récursive 
 // force brute: l'idée est de trouver une fleur envahissante dans le tableau grâce à la méthode diviser pour régner
 
-public class Solrecurs {
+public class diviserPourRégner {
 
   public static void main(String args[])
   {
