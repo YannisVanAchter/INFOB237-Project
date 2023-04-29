@@ -59,8 +59,8 @@ public class test {
 
 
     // Sinon diviser pour régner 
-    HashMap<String, Integer> partieGauche = compteTotalParFleur(fleurs, debut, (int) (fin-debut)/ 2);
-    HashMap<String, Integer> partieDroite = compteTotalParFleur(fleurs, (int) (fin-debut)/2, fin);
+    HashMap<String, Integer> partieGauche = compteTotalParFleur(fleurs, debut, (int) (fin+debut)/ 2);
+    HashMap<String, Integer> partieDroite = compteTotalParFleur(fleurs, (int) (fin+debut)/2, fin);
     // Dans le cas d'un tab contenant un nombre impair de fleurs, partieDroite prendra en compte un élément supplémentaire que partieGauche
 
     // Comparer les résultats pour trouver l'envahisseur final 
