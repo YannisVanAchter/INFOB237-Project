@@ -36,14 +36,14 @@ public class Glouton {
             }
         
         // System.out.println(sac);
-            System.out.println(find_max_value(sac, nb_items, poids_max));
+            System.out.println(findMaxValue(sac, nb_items, poids_max));
             i++;
             j = 0;
 
         }
     }
 
-    public static int find_max_value(Items[] bag, int nbritems, int maxpoids) {
+    public static int findMaxValue(Items[] bag, int nbritems, int maxpoids) {
 
         ArrayList<Items> value = new ArrayList<Items>();
         for (int i = 0; i < nbritems; i++) { //boucle pour ajouter un élément du sac dans la liste 

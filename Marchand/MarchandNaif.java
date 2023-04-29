@@ -38,7 +38,7 @@ public class MarchandNaif {
                     j++;
                 }
 
-                System.out.println(find_max_value(sac, nb_items, poids_max));
+                System.out.println(findMaxValueNaif(sac, nb_items, poids_max));
                 i++;
                 j = 0;
 
@@ -51,7 +51,7 @@ public class MarchandNaif {
         
     }
 
-    public static int find_max_value(ItemsNaif[] bag, int nb_items, int poids_max) {
+    public static int findMaxValueNaif(ItemsNaif[] bag, int nb_items, int poids_max) {
         int valeurMax = 0; 
         int subtab = (int) Math.pow(2, nb_items); //Math.pow = fct en java qui permet de calculer une puissance à l'aide d'une base et d'un exposant 
         for (int i = 0; i < subtab; i++) {
