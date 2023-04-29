@@ -52,7 +52,7 @@ public class Glouton {
 
         Collections.sort(products, Items.VperWcomparator); //trier les objets dans l'ordre décroissant
 
-        // for (Items str : value) {
+        // for (Items str : products) {
         //     System.out.println(str);
         // }
 
