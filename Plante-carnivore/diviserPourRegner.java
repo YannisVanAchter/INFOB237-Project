@@ -3,7 +3,7 @@ import java.io.*;
 
 //  To find a invasive flower thanks to "Divide and conquer"
 
-public class diviserPourRegner {
+public class DiviserPourRegner {
 
     public static void main(String args[]) {
         ArrayList<String> Envahisseurs = lectureFichier(args);
@@ -44,7 +44,7 @@ public class diviserPourRegner {
         return (new ArrayList<String>());
     }
 
-    public static String trouver_envahisseur(String[] fleurs, int debut, int fin) {
+    public static String trouverEnvahisseur(String[] fleurs, int debut, int fin) {
         // If there is only one flower in the array (base case)
         if (debut == fin) { 
             return fleurs[debut];
@@ -52,8 +52,8 @@ public class diviserPourRegner {
        
         // Else divide and conquer
         int milieu = (debut + fin) / 2;
-        String partieGauche = trouver_envahisseur(fleurs, debut, milieu);
-        String partieDroite = trouver_envahisseur(fleurs, milieu + 1, fin);
+        String partieGauche = trouverEnvahisseur(fleurs, debut, milieu);
+        String partieDroite = trouverEnvahisseur(fleurs, milieu + 1, fin);
 
 
         // Compare results obtained to find the final invasive plant if it exists
