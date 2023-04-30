@@ -73,6 +73,7 @@ public class diviserPourRegner {
                 }
             }
 
+            // Look if the plant is invasive
             if (compteurPartieGauche > (milieu+1)){
                 return partieGauche;
             }
@@ -80,6 +81,7 @@ public class diviserPourRegner {
                 return partieDroite; 
             }  
         } 
+        // If there is no invasive plant 
         return("null");
     
     }

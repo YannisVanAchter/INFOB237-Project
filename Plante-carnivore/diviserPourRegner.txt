@@ -1,0 +1,4 @@
+Complexité : 
+Pour la boucle for O(n) car compare l'élement qu'on recherche aux élements restants dans le tableau (on le fait pour partieGauche puis pour PartieDroite)
+De plus, l'algorithme de diviser pour régner coupe le tableau en deux jusqu'à quand cela n'est plus possible: on a donc une complexité de O(log(n))
+Ainsi, on a un algorithme de même complexité que l'exemple "Tri fusion" soit : O(n log2 n)
