@@ -30,7 +30,7 @@ public class DiviserPourRegner {
                 String m_plantes = br.readLine();
                 // Create an array with the plants of the row
                 String[] plantes = m_plantes.split(", ");
-                EnvahisseursChamp.add(trouver_envahisseur(plantes, 0, plantes.length-1)); 
+                EnvahisseursChamp.add(trouverEnvahisseur(plantes, 0, plantes.length-1)); 
                 i += 1;
             }
 
