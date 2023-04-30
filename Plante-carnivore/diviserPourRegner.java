@@ -5,6 +5,12 @@ import java.io.*;
 
 public class DiviserPourRegner {
 
+    /*@ public normal_behavior;
+    @assignable Envahisseurs; 
+    @also 
+    @exceptional_behavior                                    
+    @signals IOException; 
+    @*/
     public static void main(String args[]) {
         ArrayList<String> Envahisseurs = lectureFichier(args);
         for (String envahisseur: Envahisseurs){
@@ -12,6 +18,13 @@ public class DiviserPourRegner {
         }
     }
 
+    /*@ public normal_behavior;
+    @assignable EnvahisseursChamp; 
+    @ /return == EnvahisseursChamp;
+    @also 
+    @exceptional_behavior                                    
+    @signals IOException; 
+    @*/
     public static ArrayList<String> lectureFichier(String args[]) {
         try {
            
@@ -44,6 +57,14 @@ public class DiviserPourRegner {
         return (new ArrayList<String>());
     }
 
+
+    
+    /*@ public normal_behavior;  
+    @requires fleurs != null && fleurs.length > 0; 
+    @invariant compteurPartieGauche >= 0 && compteurPartieDroite >= 0;  
+    @assignable compteurPartieGauche, compteurPartieDroite, milieu, partieGauche, partieDroite; 
+    @ensure \result == partieGauche || \result == partieDroite || \result == fleurs[debut] || \result == "null";
+    @*/
     public static String trouverEnvahisseur(String[] fleurs, int debut, int fin) {
         // If there is only one flower in the array (base case)
         if (debut == fin) { 
@@ -60,7 +81,7 @@ public class DiviserPourRegner {
         if (partieGauche.equals(partieDroite)) {
             return partieGauche;
         } else{
-            // If the two sides didn't find the same invasive plant, we have to count the occurence of the flowers
+            // If both sides didn't find the same invasive plant, we have to count the occurence of the flowers
             int compteurPartieGauche = 0; 
             int compteurPartieDroite = 0; 
             for (int i = debut; i<= fin; i++){
