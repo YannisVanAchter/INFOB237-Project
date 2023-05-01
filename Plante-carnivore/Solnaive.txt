@@ -7,7 +7,7 @@ Point 1: Analyser l'énoncé
   la deuxième contient le détail de ces fleurs (3) 
 
 Ainsi si n = 2 
-Il y aura 5 lignes dans le fichier (soit (1) puis (2) puis (3) puis (2) puis (3) 
+Il y aura 5 lignes dans le fichier (soit (1) puis (2) puis (3) puis (2) puis (3))
 
 Point 4: 
 La solution comporte  2 boucles for 
