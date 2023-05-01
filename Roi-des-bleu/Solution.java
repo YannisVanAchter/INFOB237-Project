@@ -1,14 +1,9 @@
 
 // import java.util.*;
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Solution {
-
-    public static void print(Object s)
-    {
-        // System.out.println(s.toString());
-    }
     public static void main(String[] args) {
         try {
             // File file = new File("./Roi-des-bleu/maps.txt");
@@ -22,28 +17,36 @@ public class Solution {
                 for (int mapId = 0; mapId < nbMaps; mapId++) {
                     String[] mapSize = br.readLine().strip().split(" ");
                     int nbLines = Integer.parseInt(mapSize[0]);
-                    print("N° Line: " + nbLines);
                     int nbColumns = Integer.parseInt(mapSize[1]);
-                    print("N° Column: " + nbColumns);
                     int beerLimit = Integer.parseInt(mapSize[2]);
-                    print("N° Beer: " + beerLimit);
+                    
+                    // support for test file, if no result expected, return -2
+                    int resultExpected = -2;
+                    if (mapSize.length >= 4)
+                    {
+                        resultExpected = Integer.parseInt(mapSize[3]);
+                    }
 
-                    int[][] map = new int[nbLines][nbColumns];
+                    HashMap<String, ArrayList<Integer>> map = new HashMap<String, ArrayList<Integer>>();
 
                     for (int lineId = 0; lineId < nbLines; lineId++) {
                         String[] line = br.readLine().strip().split(" ");
-                        for (String l: line)
-                            System.out.print(l + "-");
-                        System.out.println();
                         for (int columnId = 0; columnId < nbColumns; columnId++) {
-                            map[lineId][columnId] = Integer.parseInt(line[columnId]);
+                            String key = getKey(lineId, columnId);
+                            System.out.print(line[columnId] + "-");
+                            map.put(key, new ArrayList<Integer>());
+                            map.get(key).add(Integer.parseInt(line[columnId]));
                         }
-                        ;
+                        System.out.println();
                     }
-                    print("Map.length = " + map.length);
-                    print("Map[0].length = " + map[0].length);
 
-                    System.out.println("Final value: " + findBestPath(map, beerLimit, nbColumns, nbLines));
+                    long startTime = System.nanoTime();
+                    int result = findBestPath(map, beerLimit, nbColumns, nbLines);
+                    long endTime = System.nanoTime();
+                    System.out.println("Final value: " + result);
+                    if (mapSize.length >= 4 && resultExpected != -2)
+                        System.out.println("Expected: " + resultExpected + " actual: " + result + "\nSuccess: " +  (result == resultExpected));
+                    System.out.println("Time: " + (endTime - startTime) / 1000000 + "ms");
                 }
 
                 br.close();
@@ -55,109 +58,119 @@ public class Solution {
         }
     }
 
-    public static int findBestPath(int[][] map, int beerLimit, int maxColumns, int maxLines) {
-        System.out.println("Processing");
-        print("Beer limit: " + beerLimit);
-        print("Maximum lines: " + maxLines);
-        print("Maximum column: " + maxColumns);
+    /**
+     * Get key for a map
+     * @param lineId line id where to get values
+     * @param columnId column id where to get values
+     * @return key for a map
+     */
+    public static String getKey(int lineId, int columnId) {
+        return "(" + lineId + ", " + columnId + ")";
+    }
 
-        // build summed map
-        ArrayList<ArrayList<Integer>> sum = new ArrayList<>(maxLines);
-        for (int i = 0;  i < maxLines + 1; i++) {
-            sum.add(new ArrayList<Integer>(maxColumns));
-            for (int j = 0; j < maxColumns + 1; j++)
-                sum.get(i).add(0);
-        }
-        
-        // add values from the map to the sum, take  the minimum at first.
-        for (int currentLine = maxLines - 1; currentLine >= 0; currentLine--) {
-            print("Current line: " + currentLine);
-            for (int currentColumn = maxColumns - 1; currentColumn >= 0; currentColumn--) {
-                print("Current column: " + currentColumn);
-                print("Processing coordinates: (" + currentLine + ", " + currentColumn + ")");
-                print("Value: " + map[currentLine][currentColumn]);
-                int previousVertical = Integer.MAX_VALUE;
-                if (currentColumn < maxColumns - 1)
-                {
-                    previousVertical = sum.get(currentLine ).get(currentColumn + 1);
+    /**
+     * Find the best path in a map
+     * @param map key="(x, y)", value=[current value, NOT INITIALIZED, NOT INITIALIZED...]
+     * @param beerLimit beer limit imposed by file definition
+     * @param maxColumns max number of columns in the map
+     * @param maxLines max number of lines in the map
+     */
+    public static int findBestPath(HashMap<String, ArrayList<Integer>> map, int beerLimit, int maxColumns,
+            int maxLines) {
+        System.out.println("Processing...");
+
+
+        for (int lineId = maxLines - 1; lineId >= 0; lineId--) {
+            for (int columnId = maxColumns - 1; columnId >= 0; columnId--) {
+                String key = getKey(lineId, columnId);
+                ArrayList<Integer> values = map.get(key);
+                int currentValue = values.get(0);
+
+                if (lineId == maxLines - 1 && columnId == maxColumns - 1) {
+                    if (currentValue > beerLimit)
+                        // last value alraedy too high stop process to safe time
+                        return -1;
+                    // We add the value to the list at last index because we pass the first element before adding 
+                    values.add(currentValue);
+                }
+                if (lineId < maxLines - 1) {
+                    values = addValues(map, lineId + 1, columnId, values, beerLimit,
+                            currentValue);
+                    map.put(key, values);
                 }
 
-                int previousHorizontal = Integer.MAX_VALUE;
-                if (currentLine < maxLines - 1)
-                {
-                    previousHorizontal = sum.get(currentLine + 1).get(currentColumn);
+                if (columnId < maxColumns - 1) {
+                    values = addValues(map, lineId, columnId + 1, values, beerLimit,
+                            currentValue);
+                    map.put(key, values);
                 }
 
-                int previousDiagonal = Integer.MAX_VALUE;
-                if (currentLine < maxLines - 1 && currentColumn < maxColumns - 1)
-                {
-                    previousDiagonal = sum.get(currentLine + 1).get(currentColumn + 1);
+                if (lineId < maxLines - 1 && columnId < maxColumns - 1) {
+                    values = addValues(map, lineId + 1, columnId + 1, values, beerLimit,
+                            currentValue);
+                    map.put(key, values);
                 }
-
-                int currentTemp = map[currentLine][currentColumn];
-                if (currentLine < maxLines - 1 || currentColumn < maxColumns - 1)
-                    // if not in last line and column: add minimum
-                    currentTemp += Math.min(previousDiagonal, Math.min(previousHorizontal, previousVertical));
-                sum.get(currentLine).set(currentColumn, currentTemp);
-
-                // print int the oposit order because we start from the end and go to the beginning
-                System.out.print(sum.get(currentLine).get(currentColumn) + "-");
             }
-            System.out.println();
         }
 
-        if (sum.get(0).get(0) > beerLimit)
+        String firstKey = getKey(0, 0);
+        ArrayList<Integer> values = map.get(firstKey);
+        if (values == null)
+            // no value found
+            return -2;
+
+        if (values.size() == 1 && values.get(0) > beerLimit)
+            // contain only his own value
             return -1;
-        // by using the minimum value we can consider the maximum value to be acceptable is already computed
-        if (sum.get(0).get(0) == beerLimit)
-            return sum.get(0).get(0);
-        
-        // get path where we drink the most beer and stay under the limit
-        for (int currentLine = 0; currentLine < maxLines; currentLine++) {
-            print("Current line: " + currentLine);
-            for (int currentColumn = 0; currentColumn < maxColumns; currentColumn++) {
-                print("Current column: " + currentColumn);
-                print("Processing coordinates: (" + currentLine + ", " + currentColumn + ")");
-                print("Value: " + map[currentLine][currentColumn]);
 
-                int currentTemp = map[currentLine][currentColumn];
-                
-                if (currentTemp > beerLimit)
-                    sum.get(currentLine).set(currentColumn, Integer.MIN_VALUE);
-                else {
+        int bestValue = -1;
+        for (int valueId = 1; valueId < values.size(); valueId++) {
+            int value = values.get(valueId);
+            if (value > bestValue && value <= beerLimit)
+                bestValue = value;
+        }
+        return bestValue;
+    }
 
-                    int previousVertical = Integer.MIN_VALUE;
-                    if (currentColumn > 0)
-                        previousVertical = sum.get(currentLine ).get(currentColumn - 1);
-                    if (previousVertical + currentTemp > beerLimit || previousVertical < 0)
-                        previousVertical = Integer.MIN_VALUE;
+    /**
+     * add previous value to current value list
+     * @param map key="(x, y)", value=[current value at this coord, sum of previous values...]
+     * @param lineId line id where to get values
+     * @param columnId column id where to get values 
+     * / / Line and column are use to define key
+     * @param valueToAdd list of values at current coord
+     * @param beerLimit beer limit imposed by file definition
+     * @param currentValue current value 
+     * @effect update values at current coord
+     * @return new list of updated values at current coord
+     */
+    public static ArrayList<Integer> addValues(HashMap<String, ArrayList<Integer>> map, int lineId, int columnId,
+            ArrayList<Integer> valueToAdd, int beerLimit, int currentValue)  {
+        String key = getKey(lineId, columnId);
+        return addValues(map, key, valueToAdd, beerLimit, currentValue);
+    }
 
-                    int previousHorizontal = Integer.MIN_VALUE;
-                    if (currentLine > 0)
-                        previousHorizontal = sum.get(currentLine - 1).get(currentColumn);
-                    if (previousHorizontal + currentTemp > beerLimit || previousHorizontal < 0)
-                        previousHorizontal = Integer.MIN_VALUE;
-
-                    int previousDiagonal = Integer.MIN_VALUE;
-                    if (currentLine > 0 && currentColumn > 0)
-                        previousDiagonal = sum.get(currentLine - 1).get(currentColumn - 1);
-                    if (previousDiagonal + currentTemp > beerLimit || previousDiagonal < 0)
-                        previousDiagonal = Integer.MIN_VALUE;
-
-                    if (currentLine > 0 || currentColumn > 0)
-                        // if not in last line and column: add minimum
-                        currentTemp += Math.max(previousDiagonal, Math.max(previousHorizontal, previousVertical));
-                    sum.get(currentLine).set(currentColumn, currentTemp);
+    /**
+     * add previous value to current value list
+     * @param map key="(x, y)", value=[current value at this coord, sum of previous values...]
+     * @param key key to get values of previous coord
+     * @param valueToAdd list of values at current coord
+     * @param beerLimit beer limit imposed by file definition
+     * @param currentValue current value 
+     * @effect update values at current coord
+     * @return new list of updated values at current coord
+     */
+    public static ArrayList<Integer> addValues(HashMap<String, ArrayList<Integer>> map, String key,
+            ArrayList<Integer> valueToAdd, int beerLimit, int currentValue)  {
+        ArrayList<Integer> values = map.get(key);
+        if (values != null) {
+            for (int valueId = 1; valueId < values.size(); valueId++) {
+                int value = values.get(valueId);
+                if ((((value + currentValue) <= beerLimit) && (!valueToAdd.contains(value + currentValue))) || valueToAdd.size() == 1) {
+                    valueToAdd.add(value + currentValue);
                 }
-                print("Current sum: " + sum.get(currentLine).get(currentColumn));
-                // print int the opposit order because we start from the end and go to the beginning
-                System.out.print(sum.get(currentLine).get(currentColumn) + "-");
             }
-            System.out.println();
         }
-        
-        if (sum.get(0).get(0) > beerLimit || sum.get(0).get(0) < 0)
-            return -1;
-        return sum.get(maxLines - 1).get(maxColumns - 1);
+        return valueToAdd;
     }
 }
