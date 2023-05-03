@@ -65,3 +65,21 @@ public class MarchandNaif {
 
 }
 
+
+/**
+ * Complexité :
+ * En ce qui concerne la complexité de l'algorithme naïf, elle est de O(n) car nous parcourons une fois une ArrayList. 
+ * En effet, ne sachant comment est implémenté \textit{"collection.sort"}, nous ne pouvons pas en connaitre la complexité
+ * 
+ * Invariant de la boucle for (Items item : bag) {} :
+ * Invariant ==> item ⊂ bag && item ∈ Items
+ * Variant ==> Passage à l'item suivant 
+ * Terminaison ==> lorsque tous les item E Items ont été parcouru
+ * 
+ * Symboles utilisés pour les preuves :
+ * ∈ signifie "appartient"
+ * ⊂ signifie "se trouvant"
+ * && signifie "et"
+ * 
+ */
+
