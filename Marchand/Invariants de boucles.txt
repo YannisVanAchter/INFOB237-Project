@@ -23,7 +23,7 @@ Cas où i == 0
 Invariant = respecté car la condition 0 <= i < subtab est respectée puisque i == 0
 Cas où i += 1 
 Invariant = respecté car la condition 0 <= i < subtab puisque, par exemple, si i == 1, alors quand i vaudra i += 1, alors i vaudra 2 et respecte toujours la condition 
-Cas Terminaison
+Cas Terminaison où int i == subtab 
 Invariant = respecté car si i == subtab alors nous avons parcouru toutes les sous-listes et donc nous n'avons plus besoin d'itérer sur celles-ci.
 
 
