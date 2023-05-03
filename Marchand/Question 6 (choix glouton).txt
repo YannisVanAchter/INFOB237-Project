@@ -1,1 +1,0 @@
-La propriété gloutonne dont on aurait besoin pour résoudre le problème du marchand est la suivante : "choisir l'objet ayant le meilleur rapport valeur/poids, sans dépasser le poids maximum autorisé". 

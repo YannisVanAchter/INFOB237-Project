@@ -39,24 +39,3 @@ Cas où j += 1
 Invariant = respecté car la condition 0 <= int j < nb_items est respectée puisque, par exemple, si j == 1, alors il prendra la valeur 2 et la condition sera toujours respectée
 Cas Terminaison
 Invariant = respecté car si j == nb_items alors nous avons parcouru tous les produits disponibles dans la sous-liste qu'on explorait et donc nous n'avons plus besoin d'itérer sur celle-ci.
-
-
-Algo Glouton :
-
-for (int i = 0; i < nbritems; i++) {}
-Invariant ==> i est un entier se trouvant entre 0 (compris) et nbritems (non compris), nbritems l'est aussi et est non null 
-Variant ==> l'entier i augmente à chaque itération 
-Terminaison ==> lorsque i est égal à nbritems  
-
-for (Items str : value) {} 
-Invariant ==> tous les str sont de type Items et se trouvent dans value
-Variant ==> on itère sur chaque str
-Terminaison ==> quand on a parcouru tous les str possibles 
-
-for (int j = 0; j < nbritems; j++) {}
-Invariant ==> j est un entier se trouvant entre 0 (compris) et nbritems (no compris), nbritems est un entier et non null  
-Variant ==> l'entier j augmente à chaque itération 
-Terminaison ==> lorsque j est égal à nbritems
-
-PREUVE PAS COMPRIS 
-

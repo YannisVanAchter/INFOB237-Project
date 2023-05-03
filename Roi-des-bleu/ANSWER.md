@@ -53,12 +53,16 @@ Example:
 
 ## Invariant and loop variant
 
+<<<<<<< Updated upstream
 ### Naïve solution
 
 No loop <=> No loop invariant
 
 ### Invariant final solution
 \forall int 0 <= i <= tab.horizontal.lenght - 1, 0 <= j <= tab.vertical.lenght -1 {...}
+=======
+Concerning the loop invariants with their proofs, since the "findBestPath" method is recursive, it does not have any loop. As a consequence, it has no loop invariant. 
+>>>>>>> Stashed changes
 
 ## Complexity of the naïve solution
 
