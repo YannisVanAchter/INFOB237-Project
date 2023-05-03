@@ -53,7 +53,12 @@ Example:
 
 ## Invariant and loop variant
 
-WAIT FOR SIMON 
+### Naïve solution
+
+No loop <=> No loop invariant
+
+### Invariant final solution
+\forall int 0 <= i <= tab.horizontal.lenght - 1, 0 <= j <= tab.vertical.lenght -1 {...}
 
 ## Complexity of the naïve solution
 
@@ -68,4 +73,12 @@ At each step, find the place where there is less beer
 
 ## Recursive equation
 
-?? HOW TO DO THIS ??
+F(tab, line, column, maxBeer) = max(F(tab, line - 1, column, maxBeer - tab[line][column]), F(tab, line, column - 1, maxBeer - tab[line][column]), F(tab, line - 1, column - 1, maxBeer - tab[line][column])) + tab[line][column]
+
+
+## Complexity of the final solution
+
+loop over board and create summed board: n^3
+Once summed board is created, loop over it to find the best solution: n 
+
+=> O(n^3 + n) = O(n^3)

@@ -88,7 +88,7 @@ public class Solution {
 
                 if (lineId == maxLines - 1 && columnId == maxColumns - 1) {
                     if (currentValue > beerLimit)
-                        // last value alraedy too high stop process to safe time
+                        // last value alreeady too high stop process to safe time
                         return -1;
                     // We add the value to the list at last index because we pass the first element before adding 
                     values.add(currentValue);
@@ -141,7 +141,7 @@ public class Solution {
      * @param valueToAdd list of values at current coord
      * @param beerLimit beer limit imposed by file definition
      * @param currentValue current value 
-     * @effect update values at current coord
+     * @effect update values at current coord (give by valueToAdd)
      * @return new list of updated values at current coord
      */
     public static ArrayList<Integer> addValues(HashMap<String, ArrayList<Integer>> map, int lineId, int columnId,
@@ -157,7 +157,7 @@ public class Solution {
      * @param valueToAdd list of values at current coord
      * @param beerLimit beer limit imposed by file definition
      * @param currentValue current value 
-     * @effect update values at current coord
+     * @effect update values at current coord (give by valueToAdd)
      * @return new list of updated values at current coord
      */
     public static ArrayList<Integer> addValues(HashMap<String, ArrayList<Integer>> map, String key,
