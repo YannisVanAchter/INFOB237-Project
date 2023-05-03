@@ -4,6 +4,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class MarchandNaif {
@@ -15,60 +17,50 @@ public class MarchandNaif {
             File fichier = new File("./Marchand.txt"); //pathname du fichier 
             Scanner myReader = new Scanner(fichier);
             int n = 0; 
-            int i = 0; 
-            int j = 0; 
 
+            // lecture du nombre de sacs dont on doit trouver la solution
+            String line = myReader.nextLine().strip();
+            n = Integer.parseInt(line);
 
-                String line = myReader.nextLine().strip();
-                n = Integer.parseInt(line);
-
-            while (i < n){
+            for (int i = 0; i < n; i++){
                 line = myReader.nextLine().strip();
                 String[] parts = line.split(" ");
+
+                // paramettre du sac i
                 int nb_items = Integer.parseInt(parts[0]);
                 int poids_max = Integer.parseInt(parts[1]);
-                ItemsNaif[] sac = new ItemsNaif[nb_items];
+                ArrayList<Items> sac = new ArrayList<Items>(nb_items);
 
-                while(j < nb_items){
+                // création du sac i
+                for (int j = 0; j < nb_items; j++){
                     line = myReader.nextLine().strip();
                     String[] tab = line.split(" ");
+                    // paramettre d'un Item 
                     int valeur = Integer.parseInt(tab[0]);
                     int poids = Integer.parseInt(tab[1]);
-                    sac[j] = new ItemsNaif(valeur, poids);
-                    j++;
+
+                    sac.add(new Items(valeur, poids));
                 }
 
-                System.out.println(findMaxValueNaif(sac, nb_items, poids_max));
-                i++;
-                j = 0;
-
-
+                int value = findMaxValueNaif(sac, nb_items, poids_max);
+                System.out.println("Ce sac peux contenir: " + value + " en valeur au maximum");
             }
         } catch (FileNotFoundException f) {
             System.out.println(f);
         }
-
-        
     }
 
-    public static int findMaxValueNaif(ItemsNaif[] bag, int nb_items, int poids_max) {
-        int valeurMax = 0; 
-        int subtab = (int) Math.pow(2, nb_items); //Math.pow = fct en java qui permet de calculer une puissance à l'aide d'une base et d'un exposant 
-        for (int i = 0; i < subtab; i++) {
-            int current_pd = 0;
-            int current_val = 0; 
-            for (int j = 0; j < nb_items; j++){
-                if (((i >> j) & 1) == 1) { //permet de générer les sous-ensemble d'une liste en se basant sur les bits 
-                    current_pd += bag[j].getPoids();
-                    current_val += bag[j].getValeur();
-                } 
+    public static int findMaxValueNaif(ArrayList<Items> bag, int nb_items, int poids_max) {    
+        // Trie le sac par ordre décroissant de valeur/poids
+        Collections.sort(bag, Items.VperWcomparator);
+        int value = 0;
+        for (Items item : bag) {
+            if (poids_max - item.getPoids() >= 0) {
+                poids_max -= item.getPoids();
+                value += item.getValeur();
             }
-            if (current_pd <= poids_max && current_val > valeurMax){
-                return current_val = valeurMax;
-            }
-        }      
-        
-        return -1;
+        }
+        return value;
     }
 
 }

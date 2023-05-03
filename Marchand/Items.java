@@ -12,6 +12,12 @@ public class Items implements Comparable<Items>{
         this.VperW = vperw;
     }
 
+    public Items(int val, int pds) {
+        this.valeur = val;
+        this.poids = pds;
+        this.VperW = val/pds;
+    }
+
     public static Comparator<Items> VperWcomparator = new Comparator<Items>() {
         @Override
         public int compare(Items s1, Items s2) {
