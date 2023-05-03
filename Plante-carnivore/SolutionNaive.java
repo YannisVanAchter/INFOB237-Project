@@ -91,18 +91,18 @@ public class solutionNaive {
 }
 
 
-
 // Complexité de O(n^2) 
 
 
-// Boucles - invariants - preuves : 
+/* Boucles - invariants - preuves : 
 
-// La solution comporte  2 boucles for 
+for (String fleur : fleurs) : au sein de trouver_envahisseur(String[] fleurs)):
+ Variant de boucle: passage à l'élément suivant 
+ Invariant de boucle: fleur ∈ fleurs 
+ Terminaison : quand tous les éléments fleur ∈ fleurs ont été parcouru
 
-// Pour la 1ère boucle for (au sein de trouver_envahisseur(String[] fleurs)):
-// Variant de boucle: i (i est incrémenté)
-// Invariant de boucle: 0<=i<=fleurs.length
-
-// Pour la 2ème boucle for (au sein de compterOccurence(String[] tab, String elem))
-// Variant de boucle: i (i est incrémenté pour parcourir l'ensemble des éléments du tableau)
-// Invariant de boucle: 0<=i<=tab.length
+for (int i=0; i< tab.length; i++) : au sein de compterOccurence(String[] tab, String elem):
+ Variant de boucle: i (i++)
+ Invariant de boucle: 0<=i<=tab.length
+ Terminaison : i < tab.length 
+*/

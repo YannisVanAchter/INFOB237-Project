@@ -107,4 +107,4 @@ public class DiviserPourRegner {
 }
 
 
-// Complexité de O(log(n))
+// Complexité de O(n log(n))
