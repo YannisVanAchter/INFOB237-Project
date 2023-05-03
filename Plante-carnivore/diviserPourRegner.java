@@ -6,10 +6,7 @@ import java.io.*;
 public class DiviserPourRegner {
 
     /*@ public normal_behavior;
-    @assignable Envahisseurs; 
-    @also 
-    @exceptional_behavior                                    
-    @signals IOException; 
+    * @assignable Envahisseurs; 
     @*/
     public static void main(String args[]) {
         ArrayList<String> Envahisseurs = lectureFichier(args);
@@ -19,11 +16,11 @@ public class DiviserPourRegner {
     }
 
     /*@ public normal_behavior;
-    @assignable EnvahisseursChamp; 
-    @ /return == EnvahisseursChamp;
-    @also 
-    @exceptional_behavior                                    
-    @signals IOException; 
+    * @assignable EnvahisseursChamp; 
+    * @ /return == EnvahisseursChamp;
+    * @also 
+    * @exceptional_behavior                                    
+    * @signals IOException; 
     @*/
     public static ArrayList<String> lectureFichier(String args[]) {
         try {
@@ -60,10 +57,10 @@ public class DiviserPourRegner {
 
     
     /*@ public normal_behavior;  
-    @requires fleurs != null && fleurs.length > 0; 
-    @invariant compteurPartieGauche >= 0 && compteurPartieDroite >= 0;  
-    @assignable compteurPartieGauche, compteurPartieDroite, milieu, partieGauche, partieDroite; 
-    @ensure \result == partieGauche || \result == partieDroite || \result == fleurs[debut] || \result == "null";
+    * @requires fleurs != null && fleurs.length > 0; 
+    * @invariant compteurPartieGauche >= 0 && compteurPartieDroite >= 0;  
+    * @assignable compteurPartieGauche, compteurPartieDroite, milieu, partieGauche, partieDroite; 
+    * @ensure \result == partieGauche || \result == partieDroite || \result == fleurs[debut] || \result == "null";
     @*/
     public static String trouverEnvahisseur(String[] fleurs, int debut, int fin) {
         // If there is only one flower in the array (base case)
