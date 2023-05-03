@@ -70,10 +70,23 @@ public class Solution {
 
     /**
      * Find the best path in a map
-     * @param map key="(x, y)", value=[current value, NOT INITIALIZED, NOT INITIALIZED...]
+     * JAVA SPEC:
+     * @param map key="(x, y)", value=[current value] && value.size() == 1
      * @param beerLimit beer limit imposed by file definition
      * @param maxColumns max number of columns in the map
      * @param maxLines max number of lines in the map
+     * @return -2 if no value found, -1 if no path found, best value otherwise
+     * 
+     * JML SPEC:
+     * @requires map != null && beerLimit >= 0 && maxColumns > 0 && maxLines > 0;
+     * @requires map.size() == maxColumns * maxLines;
+     * @requires \forall int i; 0 <= i < maxLines; \forall int j; 0 <= j < maxColumns; map.containsKey(getKey(i, j));
+     * @requires \forall int i; 0 <= i < maxLines; \forall int j; 0 <= j < maxColumns; map.get(getKey(i, j)).size() == 1;
+     * 
+     * @assignable currentValue;
+     * @assignable bestValue;
+     * @ensures 0 <= bestValue <= beerLimit || bestValue == -1 || bestValue == -2;
+     * @ensures \result >= -1 || \result <= beerLimit;
      */
     public static int findBestPath(HashMap<String, ArrayList<Integer>> map, int beerLimit, int maxColumns,
             int maxLines) {
@@ -137,7 +150,7 @@ public class Solution {
      * @param map key="(x, y)", value=[current value at this coord, sum of previous values...]
      * @param lineId line id where to get values
      * @param columnId column id where to get values 
-     * / / Line and column are use to define key
+     * / / Line and column are used to define key
      * @param valueToAdd list of values at current coord
      * @param beerLimit beer limit imposed by file definition
      * @param currentValue current value 

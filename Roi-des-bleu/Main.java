@@ -56,6 +56,17 @@ public class Main {
 
     /**
      * DO NOT USE THIS FUNCTION, USE findBestPath(HashMap<Integer, ArrayList<Integer>> map, int beerLimit) INSTEAD
+     * @requires map != null && map.size() > 0 && map.get(0).size() > 0
+     * @requires 0 <= currentRowId < map.size && 0 <= currentColumnId < map.get(0).size
+     * @requires currentBeer >= 0 // represent the current total of beer
+     * @requires beerLimit >= 0 // represent the maximum of beer that can be carried
+     * 
+     * @assert currentBeer = currentBeer + map.get(currentRowId).get(currentColumnId);
+     * @assignable previousVertical = findBestPath(map, beerLimit, currentColumnId, currentRowId + 1, currentBeer) + currentBeer;
+     * @assignable previousHorizontal = findBestPath(map, beerLimit, currentColumnId + 1, currentRowId, currentBeer) + currentBeer;
+     * @assignable previousDiagonal = findBestPath(map, beerLimit, currentColumnId + 1, currentRowId + 1, currentBeer) + currentBeer;
+     * 
+     * @ensures \result = \max(previousVertical, previousHorizontal, previousDiagonal)
      */
     public static int findBestPath(
             HashMap<Integer, ArrayList<Integer>> map,
