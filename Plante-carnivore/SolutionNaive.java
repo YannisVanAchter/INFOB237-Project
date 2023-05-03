@@ -89,3 +89,20 @@ public class solutionNaive {
         return(compteur); 
     }
 }
+
+
+// Complexité de O(n^2) 
+
+
+/* Boucles - invariants - preuves : 
+
+for (String fleur : fleurs) : au sein de trouver_envahisseur(String[] fleurs)):
+ Variant de boucle: passage à l'élément suivant 
+ Invariant de boucle: fleur ∈ fleurs 
+ Terminaison : quand tous les éléments fleur ∈ fleurs ont été parcouru
+
+for (int i=0; i< tab.length; i++) : au sein de compterOccurence(String[] tab, String elem):
+ Variant de boucle: i (i++)
+ Invariant de boucle: 0<=i<=tab.length
+ Terminaison : i < tab.length 
+*/

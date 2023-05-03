@@ -1,41 +1,11 @@
 Invariants et variants de boucles 
 
 Algo Naïf :
-
-for (int i = 0; i < subtab; i++) {}
-Invariant ==> i est un entier se trouvant entre 0 (compris) et subtab (non compris), subtab l'est aussi et est non null 
-Variant ==> l'entier i augmente à chaque itération 
-Terminaison ==> lorsque i est égal à subtab 
-
-for (int j = 0; j < nb_items; j++) {}
-Invariant ==> j est un entier se trouvant entre 0 (compris) et nb_items (no compris), nb_items est un entier et non null 
-Variant ==> l'entier j augmente à chaque itération 
-Terminaison ==> lorsque j est égal à nb_items
-
-EN MATH :
-for (int i = 0; i < subtab; i++) {}
-Invariant ==> 0 <= int i < subtab && int subtab != 0
-Variant ==> i ++
-Terminaison ==> int i == subtab 
-
-PREUVE : 
-Cas où i == 0 
-Invariant = respecté car la condition 0 <= i < subtab est respectée puisque i == 0
-Cas où i += 1 
-Invariant = respecté car la condition 0 <= i < subtab puisque, par exemple, si i == 1, alors quand i vaudra i += 1, alors i vaudra 2 et respecte toujours la condition 
-Cas Terminaison où int i == subtab 
-Invariant = respecté car si i == subtab alors nous avons parcouru toutes les sous-listes et donc nous n'avons plus besoin d'itérer sur celles-ci.
+∈ signifie "appartient"
+⊂ signifie "se trouvant"
+&& signifie "et"
 
 
-for (int j = 0; j < nb_items; j++) {}
-Invariant ==> 0 <= int j < nb_items && int nb_items != 0
-Variant ==> j ++
-Terminaison ==> int j == nb_items
 
-PREUVE :
-Cas où j = 0
-Invariant = respecté car la condition 0 <= int j < nb_items est respectée puisque j == 0
-Cas où j += 1 
-Invariant = respecté car la condition 0 <= int j < nb_items est respectée puisque, par exemple, si j == 1, alors il prendra la valeur 2 et la condition sera toujours respectée
-Cas Terminaison
-Invariant = respecté car si j == nb_items alors nous avons parcouru tous les produits disponibles dans la sous-liste qu'on explorait et donc nous n'avons plus besoin d'itérer sur celle-ci.
+
+
