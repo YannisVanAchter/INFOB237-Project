@@ -103,6 +103,6 @@ for (String fleur : fleurs) : au sein de trouver_envahisseur(String[] fleurs)):
 
 for (int i=0; i< tab.length; i++) : au sein de compterOccurence(String[] tab, String elem):
  Variant de boucle: i (i++)
- Invariant de boucle: 0<=i<=tab.length
+ Invariant de boucle: 0<=i<tab.length
  Terminaison : i < tab.length 
 */
