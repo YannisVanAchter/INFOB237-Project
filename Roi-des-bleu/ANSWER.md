@@ -1,5 +1,34 @@
 # Annotation for project
 
+## Summary
+- [Annotation for project](#annotation-for-project)
+  - [Summary](#summary)
+  - [Understanding the current repository and its files](#understanding-the-current-repository-and-its-files)
+  - [Analysis of the algorithm setpoints](#analysis-of-the-algorithm-setpoints)
+    - [Algorithm goals](#algorithm-goals)
+    - [Map patern](#map-patern)
+    - [Move permissions](#move-permissions)
+    - [Ambiguity](#ambiguity)
+    - [Output description](#output-description)
+    - [Description file patern (input file)](#description-file-patern-input-file)
+  - [Invariant and loop variant](#invariant-and-loop-variant)
+  - [Complexity of the naïve solution](#complexity-of-the-naïve-solution)
+  - [Optimal sub-structure of the solution](#optimal-sub-structure-of-the-solution)
+  - [Recursive equation](#recursive-equation)
+  - [Complexity of the final solution](#complexity-of-the-final-solution)
+
+<br /><br />
+
+## Understanding the current repository and its files
+
+[Mains.java](./Main.java) is the file with naïve solution. It is the first version of the project. It is not used anymore.
+
+[Main.java](./Main.java) is the file with the final solution. It is the final version of the project.
+
+In the both files, you will find the JML specification 
+
+<br />
+
 ## Analysis of the algorithm setpoints
 
 ### Algorithm goals
@@ -74,7 +103,13 @@ For final solution, we used generate and test. From that point, we can not defin
 <br />
 Unimplemantable equation:
 
-F(tab, line, column, maxBeer) = max(F(tab, line - 1, column, maxBeer - tab[line][column]), F(tab, line, column - 1, maxBeer - tab[line][column]), F(tab, line - 1, column - 1, maxBeer - tab[line][column])) + tab[line][column]
+```
+F(tab, line, column, maxBeer) = max(
+    F(tab, line - 1, column, maxBeer - tab[line][column]), 
+    F(tab, line, column - 1, maxBeer - tab[line][column]), 
+    F(tab, line - 1, column - 1, maxBeer - tab[line][column])
+    ) + tab[line][column]
+```
 
 
 ## Complexity of the final solution
