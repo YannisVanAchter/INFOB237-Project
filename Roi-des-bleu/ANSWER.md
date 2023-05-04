@@ -17,18 +17,17 @@
   - vertically (down)
   - diagonal (right and down)
 
-### Output description
-- -1 if there is no solution
-- n° beer if there is at least one solution (if many, return the best solution)
-
 ### Ambiguity
 - We don't want to find a solution where we drink less beer, but the most and stay under the limit
 
+### Output description
+- -1 if there is no solution
+- n° beer if there is at least one solution (if many, return the solution solution that maximises the number of beer drinked)
 
-### Description file patern
-- N° of map description in the current file
-- parameter of the current map
-- Map where all numbers are the beer quantities
+### Description file patern (input file)
+- N° of map description in the current file (first line)
+- parameter of the current map (next line, and repeat after map is defined)
+- Map where all numbers are the beer quantities (next lines, after map description)
 
 Example:
 ```
@@ -53,29 +52,27 @@ Example:
 
 ## Invariant and loop variant
 
-<<<<<<< Updated upstream
-### Naïve solution
-
-No loop <=> No loop invariant
-
-### Invariant final solution
-\forall int 0 <= i <= tab.horizontal.lenght - 1, 0 <= j <= tab.vertical.lenght -1 {...}
-=======
 Concerning the loop invariants with their proofs, since the "findBestPath" method is recursive, it does not have any loop. As a consequence, it has no loop invariant. 
->>>>>>> Stashed changes
 
 ## Complexity of the naïve solution
 
-O(n^3)
+The naïve solution is to try all the possible paths and to keep the one that maximizes the number of beers drank.
+
+Complexity: O(n^3)
 
 ## Optimal sub-structure of the solution
 Start from the end of the board
 
 Go one step upwards at a time until the solution (be back to the beginning)
 
-At each step, find the place where there is less beer
+At each step, compute new sum of beers with previous sub-solution. Keep the best one at the beginning.
 
 ## Recursive equation
+
+For final solution, we used generate and test. From that point, we can not define recursive equation.
+
+<br />
+Unimplemantable equation:
 
 F(tab, line, column, maxBeer) = max(F(tab, line - 1, column, maxBeer - tab[line][column]), F(tab, line, column - 1, maxBeer - tab[line][column]), F(tab, line - 1, column - 1, maxBeer - tab[line][column])) + tab[line][column]
 
@@ -83,6 +80,9 @@ F(tab, line, column, maxBeer) = max(F(tab, line - 1, column, maxBeer - tab[line]
 ## Complexity of the final solution
 
 loop over board and create summed board: n^3
+
 Once summed board is created, loop over it to find the best solution: n 
+
+<br />
 
 => O(n^3 + n) = O(n^3)
