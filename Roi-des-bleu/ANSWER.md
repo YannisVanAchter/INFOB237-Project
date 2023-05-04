@@ -58,7 +58,7 @@ Concerning the loop invariants with their proofs, since the "findBestPath" metho
 
 The naïve solution is to try all the possible paths and to keep the one that maximizes the number of beers drank.
 
-Complexity: O(n^3)
+Complexity: O(3^n)
 
 ## Optimal sub-structure of the solution
 Start from the end of the board
@@ -79,10 +79,10 @@ F(tab, line, column, maxBeer) = max(F(tab, line - 1, column, maxBeer - tab[line]
 
 ## Complexity of the final solution
 
-loop over board and create summed board: n^3
+loop over board and create summed board: n^2
 
 Once summed board is created, loop over it to find the best solution: n 
 
 <br />
 
-=> O(n^3 + n) = O(n^3)
+=> O(n^2 + n) = O(n^2)
