@@ -10,6 +10,12 @@ import java.util.Collections;
 
 public class MarchandNaif {
 
+    /**
+     * @public normal_behavior;
+     * @also
+     * @public exceptional_behavior;
+     * @signals (FileNotFoundException) file not found;
+     */
     public static void main(String[] args) {
         
         //lecture de fichier
@@ -50,6 +56,14 @@ public class MarchandNaif {
         }
     }
 
+    /**
+     * @public normal_behavior; 
+     * @requires bag != null && nb_items > 0 && poids_max > 0;
+     * @requires (\forall int i; 0 <= i && i < nb_items; bag[i] != null);
+     * @requires (\forall int i; 0 <= i && i < nb_items; bag[i] != null ==> bag[i].valeur >= 0 && bag[i].poids >= 0);
+     * @requires (\forall int i, j; 0 <= i && i < nb_items && 0 <= j && j < nb_items && i != j; bag[i] != bag[j]); 
+     * @ensures \result == \value >= 0 && \value <= poids_max
+     */
     public static int findMaxValueNaif(ArrayList<Items> bag, int nb_items, int poids_max) {    
         // Trie le sac par ordre décroissant de valeur/poids
         Collections.sort(bag, Items.VperWcomparator);
