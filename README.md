@@ -32,8 +32,8 @@ $ java Naive
 #### Solution optimisée
 
 ```bash
-$ javac Optimized.java
-$ java Optimized
+$ javac Diviser.java
+$ java Diviser
 ```
 
 ### Roi des bleu
@@ -50,8 +50,8 @@ $ java Naive
 #### Solution optimisée
 
 ```bash
-$ javac Optimized.java
-$ java Optimized
+$ javac Dynamique.java
+$ java Dynamique
 ```
 
 ### Marchand
@@ -68,6 +68,6 @@ $ java Naive
 #### Solution optimisée
 
 ```bash
-$ javac Optimized.java Items.java
-$ java Optimized
+$ javac Glouton.java Items.java
+$ java Glouton
 ```
