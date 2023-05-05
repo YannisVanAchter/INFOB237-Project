@@ -21,11 +21,11 @@
 
 ## Understanding the current repository and its files
 
-[Mains.java](./Main.java) is the file with naïve solution. It is the first version of the project. It is not used anymore.
+[Naive.java](./Naive.java) is the file with naive solution. It is the first version of the project. It is not used anymore.
 
-[Main.java](./Main.java) is the file with the final solution. It is the final version of the project.
+[Dynamique.java](./Dynamique.java) is the file with the final solution. It is the final version of the project.
 
-In the both files, you will find the JML specification 
+In both files, you will find the JML specification.  
 
 <br />
 
@@ -34,7 +34,7 @@ In the both files, you will find the JML specification
 ### Algorithm goals
 - Finding the shortest path 
 - At each node, drink the content before moving to the next one
-- Total of drinkable is determined by a number include in the description file (limit set as K)
+- Total of drinkables is determined by a number included in the description file (limit set as K)
 
 ### Map patern
 - Rectangle of the M x N defined in the description file
@@ -51,12 +51,12 @@ In the both files, you will find the JML specification
 
 ### Output description
 - -1 if there is no solution
-- n° beer if there is at least one solution (if many, return the solution solution that maximises the number of beer drinked)
+- n° beer if there is at least one solution (if many, return the solution that maximises the number of beers drinked)
 
 ### Description file patern (input file)
 - N° of map description in the current file (first line)
-- parameter of the current map (next line, and repeat after map is defined)
-- Map where all numbers are the beer quantities (next lines, after map description)
+- parameter of the current map (next line, and repeat after the map is defined)
+- Map where all numbers are the beer quantities (next lines, after the map description)
 
 Example:
 ```
@@ -85,7 +85,7 @@ Concerning the loop invariants with their proofs, since the "findBestPath" metho
 
 ## Complexity of the naïve solution
 
-The naïve solution is to try all the possible paths and to keep the one that maximizes the number of beers drank.
+The naive solution is to try all possible paths and to keep the one that maximizes the number of beers drunk.
 
 Note that `n` is the result of: Line * Column (number of nodes)
 
@@ -102,10 +102,10 @@ To save computing time, we check the cases where we are sure to go (the beginnin
 
 ## Recursive equation
 
-For final solution, we used generate and test. From that point, we can not define recursive equation.
+For the final solution, we use generate and test. From that point, we can not define recursive equation.
 
 <br />
-Unimplemantable equation:
+Unimplementable equation:
 
 ```
 F(tab, line, column, maxBeer) = max(
