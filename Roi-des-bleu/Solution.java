@@ -99,6 +99,7 @@ public class Solution {
      * 
      * @assignable bestValue;
      * @ensures 0 <= bestValue <= beerLimit || bestValue == -1 || bestValue == -2;
+     * @assignable \result == bestValue;
      * @ensures \result >= -1 || \result <= beerLimit;
      */
     public static int findBestPath(HashMap<String, ArrayList<Integer>> map, int beerLimit, int maxColumns,

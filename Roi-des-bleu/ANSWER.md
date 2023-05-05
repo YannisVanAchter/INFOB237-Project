@@ -87,6 +87,8 @@ Concerning the loop invariants with their proofs, since the "findBestPath" metho
 
 The naïve solution is to try all the possible paths and to keep the one that maximizes the number of beers drank.
 
+Note that `n` is the result of: Line * Column (number of nodes)
+
 Complexity: O(3^n)
 
 ## Optimal sub-structure of the solution
@@ -95,6 +97,8 @@ Start from the end of the board
 Go one step upwards at a time until the solution (be back to the beginning)
 
 At each step, compute new sum of beers with previous sub-solution. Keep the best one at the beginning.
+
+To save computing time, we check the cases where we are sure to go (the beginning and the end of the map), if one of them is greater than the beer limit, we return -1.
 
 ## Recursive equation
 
@@ -111,10 +115,13 @@ F(tab, line, column, maxBeer) = max(
     ) + tab[line][column]
 ```
 
+As a generate and test algorithm, there is no equation that can be applied to the problem.
 
 ## Complexity of the final solution
 
 loop over board and create summed board: n^2
+
+Note that here `n` is the result of: Line * Column (number of nodes)
 
 Once summed board is created, loop over it to find the best solution: n 
 
