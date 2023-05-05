@@ -1,22 +1,18 @@
 # INFOB237-Project
 
-Vous trouverez ici les fichiers nécessaires à la réalisation du projet de l'UE INFOB237 - Algorithmique.
+Vous trouverez ici les fichiers nécessaires à la réalisation du projet du cours INFOB237 - Algorithmique.
 
 Le rapport est disponible dans le fichier [`rapport.pdf`](./rapport.pdf).
 
 ## Organisation
-Vous trouverais les différents codes sources pour les solution naïve et optimisée dans les fichiers `Naive.java` et `Optimized.java`.
+Vous trouverez les différents codes sources pour les solutions naïves et optimisées dans chaque dossier.
 
-Les dossier sont organisés comme suit:
-- [Plante carnivore](./Plante-carnivore/) qui contient les fichiers nécessaires à la réalisation de l'exercice sur les plantes carnivores.
+Les dossier sont organisés de la manière suivante:
+- [Plante carnivore](./Plante-carnivore/) qui contient les fichiers nécessaires à la réalisation de l'exercice sur l'invasion de plante carnivore.
 - [Roi des bleu](./Roi-des-bleu/) qui contient les fichiers nécessaires à la réalisation de l'exercice sur le roi des bleus.
 - [Marchand](./Marchand/) qui contient les fichiers nécessaires à la réalisation de l'exercice sur le marchand.
   
 ## Auteurs
-
-- Aline BOULANGER pour la solution naïve et optimisée de l'exercice sur le [Marchand](./Marchand/).
-- Aurélie GENOT pour la solution naïve et optimisée de l'exercice sur les [Plantes carnivores](./Plante-carnivore/).
-- Yannis VAN ACHTER pour la solution naïve et optimisée de l'exercice sur le [Roi des bleu](./Roi-des-bleu/).
   
 Comme expliqué dans le rapport, nous avons réalisé la réflexion algorithmique ensemble et nous avons ensuite séparé le travail pour la réalisation des codes sources et du rapport.
 
