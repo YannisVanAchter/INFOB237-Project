@@ -12,14 +12,6 @@ Les dossier sont organisés comme suit:
 - [Roi des bleu](./Roi-des-bleu/) qui contient les fichiers nécessaires à la réalisation de l'exercice sur le roi des bleus.
 - [Marchand](./Marchand/) qui contient les fichiers nécessaires à la réalisation de l'exercice sur le marchand.
   
-## Auteurs
-
-- Aline BOULANGER pour la solution naïve et optimisée de l'exercice sur le [Marchand](./Marchand/).
-- Aurélie GENOT pour la solution naïve et optimisée de l'exercice sur les [Plantes carnivores](./Plante-carnivore/).
-- Yannis VAN ACHTER pour la solution naïve et optimisée de l'exercice sur le [Roi des bleu](./Roi-des-bleu/).
-  
-Comme expliqué dans le rapport, nous avons réalisé la réflexion algorithmique ensemble et nous avons ensuite séparé le travail pour la réalisation des codes sources et du rapport.
-
 ## Compilation
 
 ### Plante carnivore
@@ -36,8 +28,8 @@ $ java Naive
 #### Solution optimisée
 
 ```bash
-$ javac Optimized.java
-$ java Optimized
+$ javac Diviser.java
+$ java Diviser
 ```
 
 ### Roi des bleu
@@ -54,8 +46,8 @@ $ java Naive
 #### Solution optimisée
 
 ```bash
-$ javac Optimized.java
-$ java Optimized
+$ javac Dynamique.java
+$ java Dynamique
 ```
 
 ### Marchand
@@ -72,6 +64,6 @@ $ java Naive
 #### Solution optimisée
 
 ```bash
-$ javac Optimized.java Items.java
-$ java Optimized
+$ javac Glouton.java Items.java
+$ java Glouton
 ```
