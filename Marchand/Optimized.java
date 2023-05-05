@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 
-public class Glouton {
+public class Optimized {
 
     /**
      * @public normal_behavior;

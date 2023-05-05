@@ -6,7 +6,7 @@ import java.io.*;
 // If there is only a plant, it is invasive (because it appears > M/2 times)
 
 
-public class solutionNaive {
+public class Naive {
 
     /*@ public normal_behavior;
     *@also 

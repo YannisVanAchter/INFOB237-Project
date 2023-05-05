@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class MarchandNaif {
+public class Naive {
 
     /**
      * @public normal_behavior;
@@ -46,7 +46,7 @@ public class MarchandNaif {
                 }
 
                 int value = findMaxValueNaif(sac, nb_items, poids_max);
-                System.out.println("Ce sac peux contenir: " + value + " en valeur au maximum");
+                System.out.println(value);
             }
         } catch (FileNotFoundException f) {
             System.out.println(f);

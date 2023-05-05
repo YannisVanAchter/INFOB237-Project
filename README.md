@@ -1,1 +1,77 @@
 # INFOB237-Project
+
+Vous trouverez ici les fichiers nécessaires à la réalisation du projet de l'UE INFOB237 - Algorithmique.
+
+Le rapport est disponible dans le fichier [`rapport.pdf`](./rapport.pdf).
+
+## Organisation
+Vous trouverais les différents codes sources pour les solution naïve et optimisée dans les fichiers `Naive.java` et `Optimized.java`.
+
+Les dossier sont organisés comme suit:
+- [Plante carnivore](./Plante-carnivore/) qui contient les fichiers nécessaires à la réalisation de l'exercice sur les plantes carnivores.
+- [Roi des bleu](./Roi-des-bleu/) qui contient les fichiers nécessaires à la réalisation de l'exercice sur le roi des bleus.
+- [Marchand](./Marchand/) qui contient les fichiers nécessaires à la réalisation de l'exercice sur le marchand.
+  
+## Auteurs
+
+- Aline BOULANGER pour la solution naïve et optimisée de l'exercice sur le [Marchand](./Marchand/).
+- Aurélie GENOT pour la solution naïve et optimisée de l'exercice sur les [Plantes carnivores](./Plante-carnivore/).
+- Yannis VAN ACHTER pour la solution naïve et optimisée de l'exercice sur le [Roi des bleu](./Roi-des-bleu/).
+  
+Comme expliqué dans le rapport, nous avons réalisé la réflexion algorithmique ensemble et nous avons ensuite séparé le travail pour la réalisation des codes sources et du rapport.
+
+## Compilation
+
+### Plante carnivore
+
+Pour compiler le code source de la solution naïve, il suffit de se placer dans le dossier [`Plante-carnivore/`](./Plante-carnivore/) et d'exécuter la commande suivante:
+
+#### Solution naïve
+
+```bash
+$ javac Naive.java
+$ java Naive
+```
+
+#### Solution optimisée
+
+```bash
+$ javac Optimized.java
+$ java Optimized
+```
+
+### Roi des bleu
+
+Pour compiler le code source de la solution naïve, il suffit de se placer dans le dossier [`Roi-des-bleu/`](./Roi-des-bleu/) et d'exécuter la commande suivante:
+
+#### Solution naïve
+
+```bash
+$ javac Naive.java
+$ java Naive
+```
+
+#### Solution optimisée
+
+```bash
+$ javac Optimized.java
+$ java Optimized
+```
+
+### Marchand
+
+Pour compiler le code source de la solution naïve, il suffit de se placer dans le dossier [`Marchand/`](./Marchand/) et d'exécuter la commande suivante:
+
+#### Solution naïve
+
+```bash
+$ javac Naive.java Items.java
+$ java Naive
+```
+
+#### Solution optimisée
+
+```bash
+$ javac Optimized.java Items.java
+$ java Optimized
+```

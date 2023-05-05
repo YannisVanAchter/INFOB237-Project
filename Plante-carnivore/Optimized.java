@@ -3,7 +3,7 @@ import java.io.*;
 
 //  To find a invasive flower thanks to "Divide and conquer"
 
-public class DiviserPourRegner {
+public class Optimized {
 
     /*@ public normal_behavior;
     * @assignable Envahisseurs; 

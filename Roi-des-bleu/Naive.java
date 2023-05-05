@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class Naive {
     public static void main(String[] args) {
         try {
             // File file = new File("./Roi-des-bleu/maps.txt");
