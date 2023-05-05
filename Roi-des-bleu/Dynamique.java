@@ -3,7 +3,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Optimized {
+public class Dynamique {
     public static void main(String[] args) {
         boolean test = false;
         if (args.length > 0 && args[0].equals("test")) 
