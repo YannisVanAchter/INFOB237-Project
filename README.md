@@ -1,6 +1,6 @@
 # INFOB237-Project
 
-Vous trouverez ici les fichiers nécessaires à la réalisation du projet du cours INFOB237 - Algorithmique.
+Vous trouverez ici les fichiers nécessaires à la réalisation du projet du cours INFOB237 - Algorithmique du groupe S.
 
 Le rapport est disponible dans le fichier [`rapport.pdf`](./rapport.pdf).
 
